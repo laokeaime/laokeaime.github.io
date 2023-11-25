@@ -1207,25 +1207,26 @@
 <p>声明一个类</p>
 </li>
 </ul>
-<p>```cpp
-  class Account
-  {
-      // 属性
-      std::string name;
-      double balance;</p>
-<div class="highlight"><pre><span></span><code>  // 方法
-  bool deposit(double amount); // 存款
-  bool withdraw(double amount); // 取款
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Account</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 属性</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">balance</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// 方法</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">deposit</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span><span class="w"> </span><span class="c1">// 存款</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">withdraw</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span><span class="w"> </span><span class="c1">// 取款</span>
+<span class="p">};</span>
 </code></pre></div>
-<p>};</p>
 <ul>
 <li>创建类的对象</li>
 </ul>
-<p>```cpp
-  Account jobs_account;
-  Account alice_account;</p>
-<p>Account *mary_account = new Account();
-  delete mary_account;</p>
+<div class="highlight"><pre><span></span><code><span class="n">Account</span><span class="w"> </span><span class="n">jobs_account</span><span class="p">;</span>
+<span class="n">Account</span><span class="w"> </span><span class="n">alice_account</span><span class="p">;</span>
+
+<span class="n">Account</span><span class="w"> </span><span class="o">*</span><span class="n">mary_account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Account</span><span class="p">();</span>
+<span class="k">delete</span><span class="w"> </span><span class="n">mary_account</span><span class="p">;</span>
+</code></pre></div>
 <ul>
 <li>创建类的对象</li>
 </ul>
@@ -1245,22 +1246,24 @@
 </li>
 <li>
 <p>使用点操作符</p>
-<p>``` cpp
-Account jobs_account;</p>
-<p>jobs_account.balance; //属性
-jobs_account.deposit(1000); //方法
-```</p>
+<div class="highlight"><pre><span></span><code><span class="n">Account</span><span class="w"> </span><span class="n">jobs_account</span><span class="p">;</span>
+
+<span class="n">jobs_account</span><span class="p">.</span><span class="n">balance</span><span class="p">;</span><span class="w"> </span><span class="c1">//属性</span>
+<span class="n">jobs_account</span><span class="p">.</span><span class="n">deposit</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="c1">//方法</span>
+</code></pre></div>
 </li>
 <li>
 <p>如果是一个指向对象的指针，可以解引用或者使用箭头操作符</p>
-<p>```cpp
-Account *alice_account = new Account();</p>
-<p>//要加括号，点的优先级高于解优先级
-(*alice_account).balance; // 解引用
-(*alice_account).deposit(100.0);</p>
-<p>// 用指针访问
-alice_account-&gt;balance; // 箭头运算符
-alice_account-&gt;deposit(100.0);</p>
+<div class="highlight"><pre><span></span><code><span class="n">Account</span><span class="w"> </span><span class="o">*</span><span class="n">alice_account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Account</span><span class="p">();</span>
+
+<span class="c1">//要加括号，点的优先级高于解优先级</span>
+<span class="p">(</span><span class="o">*</span><span class="n">alice_account</span><span class="p">).</span><span class="n">balance</span><span class="p">;</span><span class="w"> </span><span class="c1">// 解引用</span>
+<span class="p">(</span><span class="o">*</span><span class="n">alice_account</span><span class="p">).</span><span class="n">deposit</span><span class="p">(</span><span class="mf">100.0</span><span class="p">);</span>
+
+<span class="c1">// 用指针访问</span>
+<span class="n">alice_account</span><span class="o">-&gt;</span><span class="n">balance</span><span class="p">;</span><span class="w"> </span><span class="c1">// 箭头运算符</span>
+<span class="n">alice_account</span><span class="o">-&gt;</span><span class="n">deposit</span><span class="p">(</span><span class="mf">100.0</span><span class="p">);</span>
+</code></pre></div>
 </li>
 </ul>
 <h2 id="12-publicprivateprotected">1.2 public、private、protected访问权限</h2>
@@ -1280,72 +1283,80 @@ alice_account-&gt;deposit(100.0);</p>
 <ul>
 <li><code>private</code>和<code>public</code>冒号后的会自动分配权限</li>
 </ul>
-<p>```cpp
-  class Account
-  {
-  private:
-      // 属性
-      std::string name;
-      double balance;</p>
-<p>public:
-      // 方法
-      bool deposit(double amount); // 存款
-      bool withdraw(double amount); // 取款
-  };</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Account</span>
+<span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 属性</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">balance</span><span class="p">;</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 方法</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">deposit</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span><span class="w"> </span><span class="c1">// 存款</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="nf">withdraw</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span><span class="w"> </span><span class="c1">// 取款</span>
+<span class="p">};</span>
+</code></pre></div>
 <ul>
 <li>访问权限调用示例</li>
 </ul>
-<p>```cpp
-  Account *alice_account = new Account();</p>
-<p>// 以下操作尝试直接访问私有成员变量 'name' 会导致编译错误
-  // alice_account-&gt;name = "Alice"; // 错误，因为 name 是 private 的</p>
-<p>// 正确的操作是调用公共成员函数 'deposit'
-  alice_account-&gt;deposit(100.0); // 正确，因为 deposit 是 public 的</p>
-<p>delete alice_account; // 释放动态分配的内存</p>
+<div class="highlight"><pre><span></span><code><span class="n">Account</span><span class="w"> </span><span class="o">*</span><span class="n">alice_account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Account</span><span class="p">();</span>
+
+<span class="c1">// 以下操作尝试直接访问私有成员变量 &#39;name&#39; 会导致编译错误</span>
+<span class="c1">// alice_account-&gt;name = &quot;Alice&quot;; // 错误，因为 name 是 private 的</span>
+
+<span class="c1">// 正确的操作是调用公共成员函数 &#39;deposit&#39;</span>
+<span class="n">alice_account</span><span class="o">-&gt;</span><span class="n">deposit</span><span class="p">(</span><span class="mf">100.0</span><span class="p">);</span><span class="w"> </span><span class="c1">// 正确，因为 deposit 是 public 的</span>
+
+<span class="k">delete</span><span class="w"> </span><span class="n">alice_account</span><span class="p">;</span><span class="w"> </span><span class="c1">// 释放动态分配的内存</span>
+</code></pre></div>
 <h2 id="13">1.3 实现成员方法</h2>
 <h3 id="_2">示例</h3>
 <ul>
 <li>在类内部实现成员方法</li>
 </ul>
-<p>```cpp
-  class Account
-  {
-  private:
-      // 属性
-      double balance {0.0};</p>
-<p>public:
-      // 方法
-      bool setBalance(double amount){
-          balance = amount;
-          return true;
-      };</p>
-<div class="highlight"><pre><span></span><code>  double getBalance(){
-      return balance;
-  };
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Account</span>
+<span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 属性</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="p">{</span><span class="mf">0.0</span><span class="p">};</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 方法</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">setBalance</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">){</span>
+<span class="w">        </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">getBalance</span><span class="p">(){</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">balance</span><span class="p">;</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="p">};</span>
 </code></pre></div>
-<p>};</p>
 <ul>
 <li>类的外部实现成员方法</li>
 </ul>
-<p>```cpp
-  class Account
-  {
-  private:
-      // 属性
-      double balance {0.0};</p>
-<p>public:
-      // 方法
-      bool setBalance(double amount);
-      double getBalance();
-  };</p>
-<p>// 类Account的成员函数实现，使用作用域解析运算符 ::
-  bool Account::setBalance(double amount){
-      balance = amount;
-      return true;
-  }</p>
-<p>double Account::getBalance(){
-      return balance;
-  }</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Account</span>
+<span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 属性</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">balance</span><span class="w"> </span><span class="p">{</span><span class="mf">0.0</span><span class="p">};</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="c1">// 方法</span>
+<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">setBalance</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">getBalance</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="c1">// 类Account的成员函数实现，使用作用域解析运算符 ::</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">Account::setBalance</span><span class="p">(</span><span class="kt">double</span><span class="w"> </span><span class="n">amount</span><span class="p">){</span>
+<span class="w">    </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">amount</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">double</span><span class="w"> </span><span class="nf">Account::getBalance</span><span class="p">(){</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">balance</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="14-constructor">1.4 构造函数 （constructor）</h2>
 <h2 id="15-destructor">1.5 析构函数（destructor）</h2>
 <h2 id="16">1.6 构造函数初始化列表</h2>
