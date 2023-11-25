@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://laokeaime.github.io/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88/</loc>
+         <loc>https://laokeaime.github.io/</loc>
          <lastmod>2023-11-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -22,6 +22,11 @@
     </url>
     <url>
          <loc>https://laokeaime.github.io/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88/C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%20%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B/</loc>
+         <lastmod>2023-11-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://laokeaime.github.io/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88/C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2BOOP%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%BC%80%E5%8F%91/</loc>
          <lastmod>2023-11-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
