@@ -1,0 +1,1333 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人">
+      
+      
+      
+        <link rel="canonical" href="https://laokeaime.github.io/%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D/%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/">
+      
+      
+        <link rel="prev" href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88/C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+      
+      
+        <link rel="next" href="../%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="已更新内容的 RSS 订阅" href="../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>测试工程师面试 - keaiboom</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="keaiboom" class="md-header__button md-logo" aria-label="keaiboom" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            keaiboom
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              测试工程师面试
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88/Jetson%20Nano/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-tabs__link">
+          
+  
+    
+  
+  图像算法工程师
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+    
+  
+  个人介绍
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="keaiboom" class="md-nav__button md-logo" aria-label="keaiboom" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    keaiboom
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    图像算法工程师
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            图像算法工程师
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Jetson Nano
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Jetson Nano
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88/Jetson%20Nano/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    常用命令
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88/Jetson%20Nano/jetson_nano/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jetson Nano简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    C++技能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            C++技能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88/C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%20%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 基础语法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88/C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%20%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 程序流程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88/C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88/C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E6%8C%87%E9%92%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 指针
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88/C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 字符和字符串
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    个人介绍
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            个人介绍
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    测试工程师面试
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    测试工程师面试
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#jmeter-postman" class="md-nav__link">
+    接口测试Jmeter ， postman；
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liunx-ssh-xshellfinallshell" class="md-nav__link">
+    连接liunx服务器 — ssh工具  （xshell，finallshell）→ 命令行界面
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centosubuntu" class="md-nav__link">
+    CentOS与Ubuntu的区别在于以下几个方面：
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    测试数据库
+  </a>
+  
+    <nav class="md-nav" aria-label="测试数据库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#insert" class="md-nav__link">
+    增（Insert）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    删（Delete）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    改（Update）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select" class="md-nav__link">
+    查（Select）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    检查测试网络断开链接
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    设计测试用例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    算法工程师面试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#jmeter-postman" class="md-nav__link">
+    接口测试Jmeter ， postman；
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#liunx-ssh-xshellfinallshell" class="md-nav__link">
+    连接liunx服务器 — ssh工具  （xshell，finallshell）→ 命令行界面
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#centosubuntu" class="md-nav__link">
+    CentOS与Ubuntu的区别在于以下几个方面：
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    测试数据库
+  </a>
+  
+    <nav class="md-nav" aria-label="测试数据库">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#insert" class="md-nav__link">
+    增（Insert）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    删（Delete）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    改（Update）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#select" class="md-nav__link">
+    查（Select）
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    检查测试网络断开链接
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    设计测试用例
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="_1">软件测试面经</h1>
+<p>爱数是做大数据、设备容灾、云相关的，问的内容包括网络、Linux、数据库、储存</p>
+<ul>
+<li>
+<p>2**、测试流程**</p>
+</li>
+<li>
+<p>测试流程通常包括以下几个阶段：</p>
+<ol>
+<li><strong>需求分析</strong>：首先要了解产品或软件的需求，以便能够准确地进行测试。</li>
+<li><strong>测试计划</strong>：在这一阶段，会制定详细的测试计划，包括测试范围、资源、时间表、风险评估等。</li>
+<li><strong>测试设计</strong>：根据测试计划和需求文档，设计测试用例、测试场景和测试数据。</li>
+<li><strong>环境搭建</strong>：准备和配置测试环境，包括硬件、软件、网络等。</li>
+<li><strong>测试执行</strong>：根据测试设计，执行测试用例，同时记录测试结果和任何发现的缺陷。</li>
+<li><strong>缺陷跟踪和管理</strong>：记录和分类发现的缺陷，与开发团队沟通，追踪缺陷状态，并进行复测。</li>
+<li><strong>回归测试</strong>：在每次代码更改或缺陷修复后，执行回归测试以确保新的代码没有引入新的问题。</li>
+<li><strong>性能测试</strong>：测试系统的性能和稳定性，通常包括加载测试、压力测试、耐久测试等。</li>
+<li><strong>安全测试</strong>：检查系统是否容易受到攻击，以及是否有数据泄露或其他安全风险。</li>
+<li><strong>用户接受测试（UAT）</strong>：在产品发布前，邀请目标用户或客户进行测试，以确保产品满足其需求和期望。</li>
+<li><strong>测试报告</strong>：在测试结束后，编写详细的测试报告，包括测试覆盖率、发现的缺陷、测试结论等。</li>
+<li><strong>发布和维护</strong>：如果测试结果满足发布标准，产品将被发布。之后还可能需要进行持续的维护和测试。</li>
+</ol>
+</li>
+<li>
+<p>3、<strong>你发现一个问题，与需求不符，但是开发那边又说没有问题，这种情况要怎么解决</strong></p>
+</li>
+<li>
+<p><strong>回顾需求文档</strong>：首先确保我对需求有准确的理解。</p>
+</li>
+<li><strong>提供证据</strong>：用测试结果、截图或日志等明确地展示问题存在。</li>
+<li><strong>开展对话</strong>：与开发团队进行开放、坦诚的沟通，解释为什么我认为这是一个问题。</li>
+<li><strong>咨询第三方</strong>：如果双方意见仍不能统一，我会求助于项目经理或产品经理来作出裁决。</li>
+<li>
+<p><strong>记录决策</strong>：最终的决策，无论是修复问题还是保持现状，都应被详细记录下来。</p>
+</li>
+<li>
+<p>4、<strong>你对测试环境有没有搭建过呢，像操作Linux这种（我说没有搭建过测试环境，就没有再问了）</strong></p>
+</li>
+<li>
+<p>5、你之前是测试的什么呢    答：功能测试，黑盒测试</p>
+</li>
+<li>
+<p><strong>6、在接口测试中，http请求，get和post有什么区别呢</strong></p>
+</li>
+<li>
+<p>用途</p>
+<p>：</p>
+<ul>
+<li><strong>GET</strong>：用于获取信息。通常用来查询服务器上的信息。</li>
+<li><strong>POST</strong>：用于发送数据。通常用来上传一个文件或者提交表单数据。</li>
+</ul>
+</li>
+<li>
+<p>参数传递方式</p>
+<p>：</p>
+<ul>
+<li><strong>GET</strong>：参数包含在URL中，通常作为查询字符串出现。</li>
+<li><strong>POST</strong>：参数存储在请求体（request body）中。</li>
+</ul>
+</li>
+<li>
+<p>安全性</p>
+<p>：</p>
+<ul>
+<li><strong>GET</strong>：由于参数直接暴露在URL中，相对不安全。</li>
+<li><strong>POST</strong>：参数在请求体中，相对更安全。</li>
+</ul>
+</li>
+<li>
+<p>数据量和长度限制</p>
+<p>：</p>
+<ul>
+<li><strong>GET</strong>：由于参数在URL中，所以受到URL长度限制，数据量通常较小。</li>
+<li><strong>POST</strong>：理论上数据量可以非常大。</li>
+</ul>
+</li>
+<li>
+<p>幂等性</p>
+<p>：</p>
+<ul>
+<li><strong>GET</strong>：应该是幂等的，即多次请求应产生相同结果。</li>
+<li><strong>POST</strong>：通常不是幂等的，因为它可能触发服务器端的状态变更。</li>
+</ul>
+</li>
+<li>
+<p>缓存</p>
+<p>：</p>
+<ul>
+<li><strong>GET</strong>：更容易被缓存。</li>
+<li><strong>POST</strong>：由于常用于修改资源，一般不被缓存。</li>
+</ul>
+</li>
+<li>
+<p>可见性</p>
+<p>：</p>
+<ul>
+<li><strong>GET</strong>：由于参数在URL中，用户可以在浏览器中直接看到。</li>
+<li><strong>POST</strong>：参数在请求体中，用户通常看不到。</li>
+</ul>
+</li>
+<li>
+<p>服务器处理</p>
+<p>：</p>
+<ul>
+<li><strong>GET</strong>：由于是获取操作，服务器数据通常不发生变化。</li>
+<li><strong>POST</strong>：可能会改变服务器状态或数据库。</li>
+</ul>
+</li>
+<li>
+<p>7、对数据库有了解过吗，操作数据的命令。</p>
+</li>
+<li>
+<p>比如说我要查看一个数据库有没有打开使用什么命令</p>
+</li>
+<li>
+<p>插入一个数据表，要怎么操作</p>
+</li>
+<li>
+<p>删除一个表格里面的一行记录</p>
+</li>
+<li>
+<p>删除一个表</p>
+</li>
+<li>
+<p>8、对于操作系统你一点都没有操作过吗，比如进入目录的命令，查看某一个文件，打开一个文件</p>
+</li>
+<li>
+<p>9、有编程经验吗？像链表、队列、栈这些，简单说一下，这三种可以用于哪种场景、区别</p>
+</li>
+</ul>
+<p>### <strong>链表（Linked List）</strong></p>
+<p>### 适用场景：</p>
+<ul>
+<li>动态数据结构，需要频繁插入和删除元素时。</li>
+<li>实现其他高级数据结构如栈和队列。</li>
+</ul>
+<p>### 特点：</p>
+<ul>
+<li>元素不是连续存储的，因此对于随机访问效率较低。</li>
+<li>插入和删除操作通常是 O(1) 的时间复杂度。</li>
+</ul>
+<p>### <strong>队列（Queue）</strong></p>
+<p>### 适用场景：</p>
+<ul>
+<li>数据按照先进先出（FIFO）的顺序处理，如任务调度、消息队列等。</li>
+<li>广度优先搜索（BFS）算法。</li>
+</ul>
+<p>### 特点：</p>
+<ul>
+<li>元素按照先进先出（FIFO）的顺序排列。</li>
+<li>常用操作有入队（enqueue）和出队（dequeue），时间复杂度通常为 O(1)。</li>
+</ul>
+<p>### <strong>栈（Stack）</strong></p>
+<p>### 适用场景：</p>
+<ul>
+<li>数据按照后进先出（LIFO）的顺序处理，如函数调用栈、撤销操作等。</li>
+<li>深度优先搜索（DFS）算法。</li>
+</ul>
+<p>### 特点：</p>
+<ul>
+<li>元素按照后进先出（LIFO）的顺序排列。</li>
+<li>常用操作有压栈（push）和弹栈（pop），时间复杂度通常为 O(1)。</li>
+</ul>
+<p>### <strong>区别：</strong></p>
+<ul>
+<li>链表是一种更基础的数据结构，可以用来实现队列和栈。</li>
+<li>队列和栈主要区别在于元素的进出顺序，队列是先进先出（FIFO），栈是后进先出（LIFO）。</li>
+<li>
+<p>在具体的实现中，链表、队列和栈可能会有各种变种，如双向链表、循环队列、双端队列（Deque）等。</p>
+</li>
+<li>
+<p>10**、在进行web端测试时，有一个报错，说参数无效，这个时候会怎么定位呢**</p>
+</li>
+</ul>
+<p>当在进行Web端测试时出现“参数无效”的报错，定位问题的一般步骤如下：</p>
+<p>### <strong>1. 查看具体的错误信息</strong></p>
+<p>首先需要查看错误信息的具体内容，以便了解是哪个参数出现了问题。如果可能，查看错误的堆栈信息或相关的日志。</p>
+<p>### <strong>2. 复现问题</strong></p>
+<p>尝试通过相同的操作或请求再次触发这个错误，以便了解这个问题是如何产生的。</p>
+<p>### <strong>3. 检查参数格式和数据</strong></p>
+<ul>
+<li>验证传入参数的格式是否正确。</li>
+<li>确认参数是否包含非法字符或超出有效范围。</li>
+<li>对比成功和失败的请求，看看参数有什么差异。</li>
+</ul>
+<p>### <strong>4. 检查代码或配置</strong></p>
+<p>如果可能，检查服务器端和客户端代码，看看是哪里处理参数出了问题。也需要检查相关的配置文件。</p>
+<p>### <strong>5. 使用开发者工具</strong></p>
+<p>使用浏览器的开发者工具（如Chrome DevTools）查看网络请求和响应。这通常能提供关于错误的更多信息。</p>
+<p>### <strong>6. 查看API文档或需求</strong></p>
+<p>仔细查看API文档或需求说明，确认是否按照预期传入了正确的参数。</p>
+<p>### <strong>7. 联系开发团队</strong></p>
+<p>如果自己不能解决问题，应及时与开发团队进行沟通，提供尽可能详细的信息以便快速定位问题。</p>
+<p>### <strong>8. 创建缺陷报告</strong></p>
+<p>如果确认这是一个问题，应创建一个详细的缺陷报告，包括如何复现问题、相关的错误信息、截图等。</p>
+<ul>
+<li>
+<p>11、如果一个服务有问题，这个时候日志量又比较多会怎么办呢？怎么分析、排查</p>
+</li>
+<li>
+<p>12、你觉得一个软件的生命周期是什么样的？在这个过程当中怎么提高产品质量</p>
+</li>
+<li>
+<p>13、对一个需求、产品进行测试，我们在什么时候介入比较合适？我们测试的工作从什么时候开始</p>
+</li>
+<li>
+<p>14、介入之后开发的代码还没有提交还不能测试，这个时候测试应该干什么呢？</p>
+</li>
+<li>
+<p>15、对网络了解吗？比如说在测试过程中遇到一些问题怎么排除是网络方法的问题呢</p>
+</li>
+<li>
+<p>16、网络七层协议中，你了解过哪些？tcp，udp协议在哪一层？tcp，udp的区别</p>
+</li>
+<li>
+<p>17、进入公司后对自己测试方面的工作有什么规划吗</p>
+</li>
+</ul>
+<p>自我介绍，为啥想干测试，你觉测试人员需要的素质你具备吗？python函数类型？python子类可以继承父类的什么？Linux常用哪些指令说一下，数据库常用哪些说一下？接口测试的请求方法？get和post的区别？在校期间学过哪些课程</p>
+<p>先共享简历、做个自我介绍</p>
+<p>问实习经历</p>
+<p>说说软件测试的大概流程</p>
+<p>tcp/udp区别</p>
+<p>Linux有哪几种系统，说几个Linux指令</p>
+<p>http和https区别</p>
+<p>数据库索引有什么作用（优点+缺点，我只说了优点，缺点面试官给我补充的）</p>
+<p>给文件附777权限用什么指令</p>
+<p>如果发现你要查询的网站断开连接了你会怎么排查</p>
+<p>微信朋友圈设计测试用例</p>
+<p>经典反问（可以反问培养机制，成长机制）</p>
+<p>1.linux系统查IP</p>
+<p>2.linux常用命令</p>
+<p>3.loadrunner测性能有哪些指标？</p>
+<p>4.测试用例设计方法</p>
+<p>5.如何测纸杯</p>
+<p>6.get、post区别</p>
+<p>7.接口请求的方式</p>
+<p>8.项目遇到哪些bug</p>
+<p>9.如何判断bug是前端还是后端</p>
+<p>10.登录模块中的安全性要考虑哪些方面</p>
+<p>11.数据库查找排序</p>
+<p>12.什么时候用get、什么时候用post</p>
+<p>13.黑盒测试、白盒测试</p>
+<h2 id="jmeter-postman">接口测试Jmeter ， postman；</h2>
+<h2 id="liunx-ssh-xshellfinallshell">连接liunx服务器 — ssh工具  （xshell，finallshell）→ 命令行界面</h2>
+<p>实验室服务器 或者 租用的  autodl 的显卡服务器</p>
+<p>sudo 管理者模式</p>
+<p>ls 展示当前文件路径下的文件</p>
+<p>pwd  显示当前文件路径</p>
+<p>cat + 文件名  显示文件内容</p>
+<p>vim编辑器  退出： esc : q</p>
+<p>编辑 就是在浏览界面 按下 i 进入insert 然后对文件进行编辑  输入完后   esc : wq! 进行保存退出</p>
+<p>解压 tar.gz文件命令    tar -zxvf</p>
+<p>修改添加环境变量  vim  / etc/profile</p>
+<p>删除命令  rm -rf BiliBili-Lucky-Draw.zip</p>
+<p>创建定时执行命令 cornet -e</p>
+<p>监控显卡  watch -n -1 nvidia-smi</p>
+<p>向liunx服务器传输文件 — 通过FTP  （xshell和finallshell） → 上传文件</p>
+<p>跨机复制命令  ****<code>sftp</code>   <code>scp</code>**</p>
+<h2 id="centosubuntu">CentOS与Ubuntu的区别在于以下几个方面：</h2>
+<p>1、源码基础不同；2、设计理念不同；3、使用场景不同；4、软件包管理不同；整体上看，CentOS更倾向于企业级服务器应用，稳定性较强；而Ubuntu更注重用户体验，适合桌面环境以及个人用户。</p>
+<h2 id="_2">测试数据库</h2>
+<p>常见的数据库类型Mysql 、MSSQL 、 Oracle 、 Memcached 、 Redis 、 Mongodb 等</p>
+<p>数据库的安装、部署 ，基础使用 。你至少得会自己在服务器 或 自己电脑上安装个数据库。 3. 常见的数据库链接工具。</p>
+<p>基本的增删改查 语句。</p>
+<p>数据库基础配置 。修改密码、添加用户等。</p>
+<p>在MySQL数据库中，基本的增（Insert）、删（Delete）、改（Update）和查（Select）操作对应的SQL命令如下：</p>
+<h3 id="insert">增（Insert）</h3>
+<p>插入一条数据：</p>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="p">(</span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="p">,</span><span class="w"> </span><span class="n">column3</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">value1</span><span class="p">,</span><span class="w"> </span><span class="n">value2</span><span class="p">,</span><span class="w"> </span><span class="n">value3</span><span class="p">,</span><span class="w"> </span><span class="p">...);</span>
+</code></pre></div>
+<p>批量插入多条数据：</p>
+<div class="highlight"><pre><span></span><code><span class="k">INSERT</span><span class="w"> </span><span class="k">INTO</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="p">(</span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="p">,</span><span class="w"> </span><span class="p">...)</span>
+<span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="n">value1_1</span><span class="p">,</span><span class="w"> </span><span class="n">value1_2</span><span class="p">,</span><span class="w"> </span><span class="p">...),</span>
+<span class="w">       </span><span class="p">(</span><span class="n">value2_1</span><span class="p">,</span><span class="w"> </span><span class="n">value2_2</span><span class="p">,</span><span class="w"> </span><span class="p">...),</span>
+<span class="w">       </span><span class="p">...;</span>
+</code></pre></div>
+<h3 id="delete">删（Delete）</h3>
+<p>删除所有数据：</p>
+<div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
+</code></pre></div>
+<p>删除符合条件的数据：</p>
+<div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="update">改（Update）</h3>
+<p>更新所有数据：</p>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">column1</span><span class="o">=</span><span class="n">value1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="o">=</span><span class="n">value2</span><span class="p">,</span><span class="w"> </span><span class="p">...;</span>
+</code></pre></div>
+<p>更新符合条件的数据：</p>
+<div class="highlight"><pre><span></span><code><span class="k">UPDATE</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="k">SET</span><span class="w"> </span><span class="n">column1</span><span class="o">=</span><span class="n">value1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="o">=</span><span class="n">value2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="select">查（Select）</h3>
+<p>查询所有列：</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
+</code></pre></div>
+<p>查询指定列：</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="p">;</span>
+</code></pre></div>
+<p>带条件查询：</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="n">column2</span><span class="p">,</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">condition</span><span class="p">;</span>
+</code></pre></div>
+<p>排序：</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">column1</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">|</span><span class="k">DESC</span><span class="p">];</span>
+</code></pre></div>
+<p>分组：</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">column1</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">column2</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="k">table_name</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">column1</span><span class="p">;</span>
+</code></pre></div>
+<p>联表查询：</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">table1</span>
+<span class="k">JOIN</span><span class="w"> </span><span class="n">table2</span>
+<span class="k">ON</span><span class="w"> </span><span class="n">table1</span><span class="p">.</span><span class="n">matching_column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">table2</span><span class="p">.</span><span class="n">matching_column</span><span class="p">;</span>
+</code></pre></div>
+<p>以上只是基础的增删改查操作，实际使用中还会有更多高级的查询和操作方式。了解这些基本的SQL命令是使用MySQL进行数据操作的基础。</p>
+<h2 id="_3">检查测试网络断开链接</h2>
+<ol>
+<li>
+<p><strong>Ping检查</strong>：首先使用Ping命令来检查网络连接是否畅通。</p>
+</li>
+<li>
+<p><strong>DNS解析</strong>：使用**<code>nslookup</code><strong>或</strong><code>dig</code>**命令来检查DNS是否能够正确解析网站的域名。</p>
+</li>
+<li>
+<p><strong>端口检查</strong>：使用**<code>telnet</code>**或其他工具来检查目标网站的端口（通常是80或443）是否开放。</p>
+</li>
+<li>
+<p><strong>网络路径诊断</strong>：使用**<code>traceroute</code><strong>（Linux）或</strong><code>tracert</code>**（Windows）命令来检查数据包从你的机器到目标服务器所经过的网络路径。</p>
+</li>
+<li>
+<p><strong>查看日志</strong>：检查操作系统和应用程序的网络日志，看是否有关于连接问题的错误信息。</p>
+</li>
+<li>
+<p><strong>代理和VPN</strong>：检查是否使用了代理或VPN，它们可能影响到网站的访问。</p>
+</li>
+<li>
+<p>浏览器检查</p>
+</li>
+</ol>
+<p>：</p>
+<ul>
+<li>清除浏览器缓存和Cookies。</li>
+<li>
+<p>尝试使用不同的浏览器来访问网站。</p>
+</li>
+<li>
+<p><strong>证书问题</strong>：如果是HTTPS网站，检查SSL证书是否有效。</p>
+</li>
+<li>
+<p><strong>与同事或朋友确认</strong>：确认是否只有你一个人遇到这个问题，还是大家都不能访问。</p>
+</li>
+<li>
+<p><strong>联系ISP或IT部门</strong>：如果以上方法都不能解决问题，可能需要联系你的网络服务提供商或企业的IT支持部门。</p>
+</li>
+<li>
+<p><strong>检查网站状态</strong>：可以通过第三方服务，如 <strong><code>Down For Everyone Or Just Me</code></strong> 来检查网站是否真的下线。</p>
+</li>
+<li>
+<p><strong>查阅社交媒体或支持页面</strong>：有时候，网站的官方社交媒体页面或者支持页面会发布关于服务中断的信息。</p>
+</li>
+</ul>
+<h2 id="_4">设计测试用例</h2>
+<p>‘’‘’</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/laokeaime?tab=repositories" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:feilongbi@126.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.7l167.6-182.9c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../../javascripts/baidu-tongji.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

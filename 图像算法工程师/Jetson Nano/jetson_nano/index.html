@@ -1,0 +1,1198 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人">
+      
+      
+      
+        <link rel="canonical" href="https://laokeaime.github.io/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88/Jetson%20Nano/jetson_nano/">
+      
+      
+        <link rel="prev" href="../%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+      
+      
+        <link rel="next" href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%20%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="已更新内容的 RSS 订阅" href="../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>Jetson Nano简介 - keaiboom</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35e1ed30.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#jetson_nano" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="keaiboom" class="md-header__button md-logo" aria-label="keaiboom" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            keaiboom
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Jetson Nano简介
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-tabs__link">
+          
+  
+    
+  
+  图像算法工程师
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D/%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/" class="md-tabs__link">
+          
+  
+    
+  
+  个人介绍
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="keaiboom" class="md-nav__button md-logo" aria-label="keaiboom" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    keaiboom
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    图像算法工程师
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            图像算法工程师
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1_1" id="__nav_1_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Jetson Nano
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Jetson Nano
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    常用命令
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Jetson Nano简介
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    C++技能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            C++技能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%20%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 基础语法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%20%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 程序流程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E6%8C%87%E9%92%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 指针
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 字符和字符串
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    个人介绍
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            个人介绍
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D/%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    测试工程师面试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D/%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    算法工程师面试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="jetson_nano">jetson_nano</h1>
+<h1 id="nano">nano踩坑</h1>
+<h2 id="_1">烧录</h2>
+<p>1 官网下载文件</p>
+<p>Jetson-210_Linux_R32.6.1_aarch64.tbz2</p>
+<p>Tegra_Linux_Sample-Root-Filesystem_R32.6.1_aarch64.tbz2</p>
+<p>2 在虚拟机创建目录</p>
+<p>mkdir -p nvidia/nvidia_sdk/JetPack_4.6_Linux_JETSON_NANO_TARGETS</p>
+<p>将上面2个文件拖进来并解压，严格按照一下的步骤</p>
+<div class="highlight"><pre><span></span><code>tar xf Jetson-210_Linux_R32.6.1_aarch64.tbz2
+cd Linux_for_Tegra/rootfs/
+sudo tar xpf ../../Tegra_Linux_Sample-Root-Filesystem_R32.6.1_aarch64.tbz2
+cd ../
+sudo ./apply_binaries.sh
+</code></pre></div>
+<p>3 烧录系统</p>
+<p>在nvidia/nvidia_sdk/JetPack_4.6_Linux_JETSON_NANO_TARGETS目录下</p>
+<div class="highlight"><pre><span></span><code>sudo ./flash.sh jetson-nano-emmc mmcblk0p1
+</code></pre></div>
+<h2 id="tf">修改TF卡启动</h2>
+<p>https://note.youdao.com/ynoteshare/index.html?id=eef9a2e70144fc9db4621d8c58f1ed02&amp;type=note&amp;_time=1666269422642</p>
+<p>1 安装dtc软件</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get install device-tree-compiler
+</code></pre></div>
+<p>2 反编译dts源文件 （针对不同jetpack，修改对应路径）</p>
+<div class="highlight"><pre><span></span><code>cd ~/nvidia/nvidia_sdk/JetPack_4.6_Linux_JETSON_NANO_TARGETS/Linux_for_Tegra/kernel/dtb
+dtc -I dtb -O dts -o tegra210-p3448-0002-p3449-0000-b00.dts tegra210-p3448-0002-p3449-0000-b00.dtb
+</code></pre></div>
+<p>3 修改tegra210-p3448-0002-p3449-0000-b00.dts源文件，找到如下部分，修改红色位置。</p>
+<div class="highlight"><pre><span></span><code>         sdhci@700b0400 {
+                compatible = &quot;nvidia,tegra210-sdhci&quot;;
+                reg = &lt;0x0 0x700b0400 0x0 0x200&gt;;
+                interrupts = &lt;0x0 0x13 0x4&gt;;
+                aux-device-name = &quot;sdhci-tegra.2&quot;;
+                iommus = &lt;0x30 0x1b&gt;;
+                nvidia,runtime-pm-type = &lt;0x0&gt;;
+                clocks = &lt;0x26 0x45 0x26 0xf3 0x26 0x136 0x26 0xc1&gt;;
+                clock-names = &quot;sdmmc&quot;, &quot;pll_p&quot;, &quot;pll_c4_out2&quot;, &quot;sdmmc_legacy_tm&quot;;
+                resets = &lt;0x26 0x45&gt;;
+                reset-names = &quot;sdhci&quot;;
+               #1 status = &quot;okay&quot;;
+                tap-delay = &lt;0x3&gt;;
+                trim-delay = &lt;0x3&gt;;
+                mmc-ocr-mask = &lt;0x3&gt;;
+                max-clk-limit = &lt;0xc28cb00&gt;;
+                ddr-clk-limit = &lt;0x2dc6c00&gt;;
+                bus-width = &lt;0x4&gt;;
+                calib-3v3-offsets = &lt;0x7d&gt;;
+                calib-1v8-offsets = &lt;0x7b7b&gt;;
+                compad-vref-3v3 = &lt;0x7&gt;;
+                compad-vref-1v8 = &lt;0x7&gt;;
+                pll_source = &quot;pll_p&quot;, &quot;pll_c4_out2&quot;;
+                ignore-pm-notify;
+                cap-mmc-highspeed;
+                cap-sd-highspeed;
+                nvidia,en-io-trim-volt;
+                nvidia,en-periodic-calib;
+                cd-inverted;
+                wp-inverted;
+                pwrdet-support;
+                nvidia,min-tap-delay = &lt;0x6a&gt;;
+                nvidia,max-tap-delay = &lt;0xb9&gt;;
+                pinctrl-names = &quot;sdmmc_schmitt_enable&quot;, &quot;sdmmc_schmitt_disable&quot;, &quot;sdmmc_clk_schmitt_enable&quot;, &quot;sdmmc_clk_schmitt_disable&quot;, &quot;sdmmc_drv_code&quot;, &quot;sdmmc_default_drv_code&quot;, &quot;sdmmc_e_33v_enable&quot;, &quot;sdmmc_e_33v_disable&quot;;
+                pinctrl-0 = &lt;0x8c&gt;;
+                pinctrl-1 = &lt;0x8d&gt;;
+                pinctrl-2 = &lt;0x8e&gt;;
+                pinctrl-3 = &lt;0x8f&gt;;
+                pinctrl-4 = &lt;0x90&gt;;
+                pinctrl-5 = &lt;0x91&gt;;
+                pinctrl-6 = &lt;0x92&gt;;
+                pinctrl-7 = &lt;0x93&gt;;
+                vqmmc-supply = &lt;0x3b&gt;;
+                vmmc-supply = &lt;0x4c&gt;;
+                # 2 cd-gpios = &lt;0x5b 0xc2 0x0&gt;;
+                # 3 sd-uhs-sdr104;
+                # 4 sd-uhs-sdr50;
+                # 5 sd-uhs-sdr25;
+                # 6 sd-uhs-sdr12;
+                mmc-ddr-1_8v;
+                # 7 no-mmc;
+                # 8 uhs-mask = &lt;0xc&gt;;
+                linux,phandle = &lt;0xba&gt;;
+                phandle = &lt;0xba&gt;;
+</code></pre></div>
+<p>4 编译dtb文件</p>
+<div class="highlight"><pre><span></span><code>dtc -I dts -O dtb -o tegra210-p3448-0002-p3449-0000-b00.dtb tegra210-p3448-0002-p3449-0000-b00.dts
+</code></pre></div>
+<p>5 烧录系统，jetson nano 需进入recovery模式，连接到Ubuntu电脑。</p>
+<div class="highlight"><pre><span></span><code>cd ~/nvidia/nvidia_sdk/JetPack_4.6_Linux_JETSON_NANO_TARGETS/Linux_for_Tegra
+
+sudo ./flash.sh jetson-nano-emmc mmcblk0p1
+
+# 检查SD卡是否被识别
+sudo ls /dev/mmcblk*
+</code></pre></div>
+<p>6 复制系统到tf卡</p>
+<div class="highlight"><pre><span></span><code>格式化SD卡
+sudo mkfs.ext4 /dev/mmcblk1
+挂载到mnt
+sudo mount /dev/mmcblk1 /mnt/
+复制整个文件系统
+sudo cp -ax / /mnt/
+卸载mnt
+sudo umount /dev/mnt/
+</code></pre></div>
+<p>7 <strong>修改boot文件,emmc和tf卡的2个文件都要修改，不然会无法启动TF卡</strong></p>
+<div class="highlight"><pre><span></span><code>sudo vim /boot/extlinux/extlinux.conf
+quiet root=/dev/mmcblk0p1  -&gt; quiet root=/dev/mmcblk1
+</code></pre></div>
+<h2 id="_2">配置环境</h2>
+<p>1 设置root密码</p>
+<div class="highlight"><pre><span></span><code>sudo passwd root
+</code></pre></div>
+<p>2 设置apt 镜像源</p>
+<div class="highlight"><pre><span></span><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+sudo vim /etc/apt/sources.list
+# 恢复默认源
+sudo cp /etc/apt/sources.list.bak /etc/apt/sources.list
+
+# 添加
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-updates main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-security main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-backports main restricted universe multiverse
+deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic main universe restricted
+deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic main universe restricted
+
+# 更新apt软件源
+sudo apt update
+# E:dpkg was interrupted, you must manually run&#39;dpkg配置&#39;to correct the problem.
+cd /var/lib/dpkg/updates
+rm -r ./*
+</code></pre></div>
+<p>3 设置python源</p>
+<div class="highlight"><pre><span></span><code>sudo apt install python3-pip python3-dev
+sudo mkdir .pip
+cd .pip
+sudo vim pip.conf
+# 添加
+[global]
+timeout = 6999
+index-url = https://pypi.doubanio.com/simple
+trusted-host = pypi.doubanio.com
+#
+</code></pre></div>
+<p>4 中文输入法</p>
+<div class="highlight"><pre><span></span><code>sudo apt install ibus-pingyin
+</code></pre></div>
+<p>5 安装miniconda</p>
+<div class="highlight"><pre><span></span><code>https://github.com/conda-forge/miniforge
+#下载
+Miniforge3-Linux-aarch64.sh
+# 安装
+bash Miniforge3-Linux-aarch64.sh -b
+# 初始化
+~/miniforge3/bin/conda init
+# 使环境变量生效
+source ~/.bashrc
+# 解决每次进入终端就是conda base的问题
+conda config --set auto_activate_base false
+# .condarc
+channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/peterjc123/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/menpo/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+show_channel_urls: true
+</code></pre></div>
+<p>6 报错 Illegal instruction(core dumped)</p>
+<div class="highlight"><pre><span></span><code>sudo vim  ~/.bashrc
+export OPENBLAS_CORETYPE=ARMV8
+source ~/.bashrc
+</code></pre></div>
+<p>7 安装jetson全家桶,cuda,cudnn,tensorRT等</p>
+<div class="highlight"><pre><span></span><code>sudo apt update
+sudo apt dist-upgrade
+sudo apt install nvidia-jetpack
+</code></pre></div>
+<p>8 设置conda环境</p>
+<div class="highlight"><pre><span></span><code>sudo vim .bashrc
+# 在文件末尾加入：
+export PATH=/usr/local/cuda-10.2/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+export CUDA_HOME=$CUDA_HOME:/usr/local/cuda-10.2
+source .bashrc
+# 查看是否成功
+nvcc -V
+</code></pre></div>
+<p>9 安装torch,torchvision</p>
+<div class="highlight"><pre><span></span><code>sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev libopenblas-base libopenmpi-dev
+
+# 不使用conda环境
+sudo pip3 install torch-1.10.0-cp36-cp36m-linux_aarch64.whl
+
+# 验证是否成功
+import torch
+print(torch.__version__)
+print(torch.cuda.is_available())
+# torchvision
+sudo pip3 install pillow
+git clone --branch v0.11.0 https://github.com/pytorch/vision torchvision
+cd torchvision
+export BUILD_VERSION=0.11.0
+sudo python3 setup.py install
+
+# 使用conda 环境,直接pip install
+conda activate yolo
+pip install torch-1.9.0-cp36-cp36m-linux_aarch64.whl
+pip install pillow
+pip install torchvision-0.9.0a0+01dfa8e-cp36-cp36m-linux_aarch64.whl
+# 验证是否成功
+import torch
+print(torch.cuda.is_available())
+import torchvision
+</code></pre></div>
+<p>10 使用tensorRT，将pt文件转换为wts文件，再转换为engine文件,以yolov5为例</p>
+<div class="highlight"><pre><span></span><code># step 1
+git clone https://github.com/wang-xinyu/tensorrtx.git
+cp {tensorrtx}/yolov5/gen_wts.py {ultralytics}/yolov5
+cd {ultralytics}/yolov5
+python gen_wts.py -w yolov5s.pt -o yolov5s.wts
+# step2
+cd {tensorrtx}/yolov5/
+mkdir build &amp;&amp; cd build
+cp {ultralytics}/yolov5/yolov5s.wts {tensorrtx}/yolov5/build
+cmake ..
+make
+sudo ./yolov5 -s [.wts] [.engine] [n/s/m/l/x/n6/s6/m6/l6/x6 or c/c6 gd gw]  // serialize model to plan file
+sudo ./yolov5 -d [.engine] [image folder]  // deserialize and run inference, the images in [image folder] will be processed.
+// For example yolov5s
+sudo ./yolov5 -s yolov5s.wts yolov5s.engine s
+sudo ./yolov5 -d yolov5s.engine ../samples
+// For example Custom model with depth_multiple=0.17, width_multiple=0.25 in yolov5.yaml
+sudo ./yolov5 -s yolov5_custom.wts yolov5.engine c 0.17 0.25
+sudo ./yolov5 -d yolov5.engine ../samples
+# step 3 optional, load and run the tensorrt model in python
+// install python-tensorrt, pycuda, etc.
+// ensure the yolov5s.engine and libmyplugins.so have been built
+python yolov5_trt.py
+// Another version of python script, which is using CUDA Python instead of pycuda.
+python yolov5_trt_cuda_python.py
+</code></pre></div>
+<p>11 安装deepstream</p>
+<div class="highlight"><pre><span></span><code># 下载sdk
+https://developer.nvidia.com/deepstream_sdk_v6.0.0_jetsontbz2
+# 准备环境
+$ sudo apt install \
+libssl1.0.0 \
+libgstreamer1.0-0 \
+gstreamer1.0-tools \
+gstreamer1.0-plugins-good \
+gstreamer1.0-plugins-bad \
+gstreamer1.0-plugins-ugly \
+gstreamer1.0-libav \
+libgstrtspserver-1.0-0 \
+libjansson4=2.11-1
+# 安装
+sudo tar -xvf deepstream_sdk_v6.0.0_jetson.tbz2 -C /
+cd /opt/nvidia/deepstream/deepstream-6.0
+sudo ./install.sh
+sudo ldconfig
+# 查看版本
+deepstream-app --version-all
+# 使用yolov5
+</code></pre></div>
+<p>12 使用deepstream</p>
+<div class="highlight"><pre><span></span><code>1 git clone https://github.com/marcoslucianops/DeepStream-Yolo
+2 python gen_wts_yoloV5.py -w yolov5s.pt
+# 生成 yolov5s.cfg yolov5s.wts 2个文件
+3 Copy the generated `cfg` and `wts` files to the `DeepStream-Yolo` folder.
+4 CUDA_VER=10.2 make -C nvdsinfer_custom_impl_Yolo
+5 Edit the `config_infer_primary_yoloV5.txt` file according to your model (example for YOLOv5s)
+e.g
+[property]
+...
+custom-network-config=yolov5s.cfg
+model-file=yolov5s.wts
+...
+6 Edit `deepstream_app_config.txt`
+[source0]
+# type 1=camerav4l2 2=url 3=MultiURL 4=RTSP 5=CSI
+enable=1
+type=5
+camera-width=1280
+camera-height=720
+camera-fps-n=50
+camera-fps-d=1
+[primary-gie]
+config-file=config_infer_primary_yoloV5.txt
+7 run deepstream
+deepstream-app -c deepstream_app_config.txt
+</code></pre></div>
+<p>12.1 deepstream_app_config.txt解析</p>
+<div class="highlight"><pre><span></span><code>[application]
+enable-perf-measurement=1
+perf-measurement-interval-sec=5
+# rows 和 columns 控制最终显示的布局，这里 1 × 1 就是最终显示 1 路，如果是 3 × 2 就是三行两列的布局显示 6 路视频。其中，width 和 height 是分辨率
+[tiled-display]
+enable=1
+rows=1
+columns=1
+width=1280
+height=720
+gpu-id=0
+nvbuf-memory-type=0
+#控制视频输入来源，可以设置多个 source 实现多路视频流的读取，通过 type 确定视频流的类型和读取方式，还可以通过 num-sources 对同一路视频进行复制扩展
+[source0]
+enable=1
+type=3
+uri=file:/home/vaeput/yolov5/data/mp4/test.mp4
+num-sources=1
+gpu-id=0
+cudadec-memtype=0
+# 调用csi摄像头
+[source1]
+enable=1
+type=5
+camera-width=1280
+camera-height=720
+camera-fps-n=50
+camera-fps-d=1
+# DeepStream 可以控制输出的方式，可以不输出结果、窗口显示和 RTSP 推流等方式。同样可以使用多个 sink，通过不同的方式同时输出结果。
+[sink0]
+enable=1
+type=2
+sync=0
+gpu-id=0
+nvbuf-memory-type=0
+
+[osd]
+enable=1
+gpu-id=0
+border-width=5
+text-size=15
+text-color=1;1;1;1;
+text-bg-color=0.3;0.3;0.3;1
+font=Serif
+show-clock=0
+clock-x-offset=800
+clock-y-offset=820
+clock-text-size=12
+clock-color=1;0;0;0
+nvbuf-memory-type=0
+
+[streammux]
+gpu-id=0
+live-source=0
+batch-size=1
+batched-push-timeout=40000
+width=1920
+height=1080
+enable-padding=0
+nvbuf-memory-type=0
+# 修改模型配置文件路径，在文件 config_infer_primary_yoloV5.txt 中对模型的相关参数进行了设置，需要从主配置文件中加载。
+[primary-gie]
+enable=1
+gpu-id=0
+gie-unique-id=1
+nvbuf-memory-type=0
+config-file=config_infer_primary_yoloV5.txt
+[tests]
+file-loop=0
+</code></pre></div>
+<p>13 安装onnx 1.10.0</p>
+<div class="highlight"><pre><span></span><code>apt-get install protobuf-compiler libprotobuf-dev
+pip install pybind11[global]
+pip install onnx==1.10.0 onnxruntime==1.10.0
+</code></pre></div>
+<p>14 配置、编译Protobuf</p>
+<div class="highlight"><pre><span></span><code>$ mkdir protobuf-3.11.4 &amp;&amp; cd protobuf-3.11.4    // 创建protobuf编译的文件夹
+$ uzip protobuf-3.11.4.zip    // 解压protobuf压缩包
+
+$ cd protobuf-3.11.4/cmake
+$ cmake . -Dprotobuf_BUILD_TESTS=OFF
+$ cmake --build .
+
+$ mkdir protobuf  // 创建protobuf安装的文件夹
+$ make install DESTDIR=/home/nvidia/protobuf // 指定protobuf安装的路径
+# 注：编译完成之后protobuf文件夹下仅仅只有user一个文件夹，需要将编译好的protobuf/user/local下的bin、include、lib文件夹复制到protobuf当前文件夹下，方便后续tensorRT_Pro项目CMakeLists.txt的指定
+$ sudo vim /etc/profile
+export PATH=$PATH:/home/nvidia/protobuf/bin
+export PKG_CONFIG_PATH=/home/nvidia/protobuf/lib/pkgconfig/
+$ source /etc/profile
+$ sudo vim /etc/ld.so.conf
+# 配置动态路径
+sudo vim /etc/ld.so.conf
+# 追加如下内容，注意路径修改为自己的路径
+/home/nvidia/protobuf/lib
+#验证
+protoc --version
+</code></pre></div>
+<p>15 安装opencv 4.5.1</p>
+<p>参考https://blog.csdn.net/m0_62013374/article/details/125014338?spm=1001.2014.3001.5506</p>
+<p>1 下载opencv与opencv-contrib的zip源码包，并解压，将opencv-contrib放进opencv文件夹</p>
+<p>2 mkdir build，把opencv / modules / features2d 复制，然后粘贴到opencv / build目录中</p>
+<p>3 修改file文件的路径(boostdesc_bgm.i)</p>
+<p>4 sudo make -j8 ,可能容易被kill，可以尝试换回make -j4</p>
+<p>5 sudo make install</p>
+<p>6 配置opencv的库添加到路径</p>
+<div class="highlight"><pre><span></span><code>sudo vim /etc/ld.so.conf.d/opencv.conf
+添加 /usr/local/lib
+sudo ldconfig
+sudo gedit /etc/bash.bashrc
+PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+export PKG_CONFIG_PATH
+source /etc/bash.bashrc
+</code></pre></div>
+<p>16 安装ros</p>
+<div class="highlight"><pre><span></span><code>wget http://fishros.com/install -O fishros &amp;&amp; bash fishros
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/laokeaime?tab=repositories" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:feilongbi@126.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.7l167.6-182.9c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../../../javascripts/baidu-tongji.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
