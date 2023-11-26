@@ -951,6 +951,19 @@
     1.6 构造函数初始化列表
   </a>
   
+    <nav class="md-nav" aria-label="1.6 构造函数初始化列表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -964,6 +977,19 @@
   <a href="#18" class="md-nav__link">
     1.8 拷贝构造函数
   </a>
+  
+    <nav class="md-nav" aria-label="1.8 拷贝构造函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -986,12 +1012,38 @@
     1.11 在类中使用static
   </a>
   
+    <nav class="md-nav" aria-label="1.11 在类中使用static">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#112-struct-class" class="md-nav__link">
     1.12 struct 和 class区别
   </a>
+  
+    <nav class="md-nav" aria-label="1.12 struct 和 class区别">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1345,6 +1397,19 @@
     1.6 构造函数初始化列表
   </a>
   
+    <nav class="md-nav" aria-label="1.6 构造函数初始化列表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1358,6 +1423,19 @@
   <a href="#18" class="md-nav__link">
     1.8 拷贝构造函数
   </a>
+  
+    <nav class="md-nav" aria-label="1.8 拷贝构造函数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1380,12 +1458,38 @@
     1.11 在类中使用static
   </a>
   
+    <nav class="md-nav" aria-label="1.11 在类中使用static">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
   <a href="#112-struct-class" class="md-nav__link">
     1.12 struct 和 class区别
   </a>
+  
+    <nav class="md-nav" aria-label="1.12 struct 和 class区别">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    示例
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1643,12 +1747,175 @@
 <h3 id="_13">只有一个析构函数（不能重载）</h3>
 <h3 id="_14">适用于释放内存等资源</h3>
 <h2 id="16">1.6 构造函数初始化列表</h2>
+<h3 id="_15">示例</h3>
+<ul>
+<li>构造函数初始化列表</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 传统的成员变量初始化方式</span>
+<span class="n">Account</span><span class="o">::</span><span class="n">Account</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">balance</span><span class="p">){</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">balance</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// 传统赋值，初值列表初始化成员变量</span>
+<span class="n">Account</span><span class="o">::</span><span class="n">Account</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">balance</span><span class="p">)</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="n">name</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">balance</span><span class="p">(</span><span class="n">balance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="17">1.7 代理构造函数</h2>
+<ul>
+<li>重载的构造函数很相似</li>
+<li>冗余的代码可能会导致错误</li>
+<li>C++ 允许使用代理构造函数</li>
+<li>在一个构造函数初始化列表中调用另一个构造函数</li>
+</ul>
 <h2 id="18">1.8 拷贝构造函数</h2>
+<ul>
+<li>当对象被拷贝时，C++必须从已存在的对象复制出一个新的对象 </li>
+<li>何时使用拷贝构造函数？</li>
+<li>以值传递方式传递对象给函数（作参数）</li>
+<li>函数以值方式返回对象</li>
+<li>使用已存在的对象复制新的对象</li>
+<li>如果不提供自己写的copy constructor，编译器会自动生成一个（可能不符合要求）</li>
+</ul>
+<h3 id="_16">示例</h3>
+<ul>
+<li>值传递给函数</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">Account</span><span class="w"> </span><span class="n">alice_account</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;Alice&#39;s account&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">};</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">printInfo</span><span class="p">(</span><span class="n">Account</span><span class="w"> </span><span class="n">acc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// acc是alice_account的副本</span>
+<span class="w">    </span><span class="c1">// 使用acc</span>
+<span class="w">    </span><span class="c1">// acc的生命周期结束，析构函数被调用</span>
+<span class="p">}</span>
+
+<span class="n">printInfo</span><span class="p">(</span><span class="n">alice_account</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>以值的方式进行返回</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">Account</span><span class="w"> </span><span class="n">new_account</span><span class="p">;</span>
+
+<span class="n">Account</span><span class="w"> </span><span class="nf">create_super_account</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Account</span><span class="w"> </span><span class="n">an_account</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;An account&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">};</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">an_account</span><span class="p">;</span><span class="w"> </span><span class="c1">// 返回an_account的副本</span>
+<span class="p">}</span>
+
+<span class="n">new_account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">create_super_account</span><span class="p">();</span>
+</code></pre></div>
+<ul>
+<li>使用已存在的对象复制新的对象</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">Account</span><span class="w"> </span><span class="n">jobs_account</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;Jobs&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">};</span>
+<span class="n">Account</span><span class="w"> </span><span class="n">bill_account</span><span class="w"> </span><span class="p">{</span><span class="n">jobs_account</span><span class="p">};</span><span class="w"> </span><span class="c1">// jobs_account 是一个对象，会调用拷贝构造函数</span>
+</code></pre></div>
+<ul>
+<li>拷贝构造函数的声明</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">Type</span><span class="o">::</span><span class="n">Type</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Type</span><span class="w"> </span><span class="o">&amp;</span><span class="n">source</span><span class="p">);</span>
+
+<span class="n">Student</span><span class="o">::</span><span class="n">Student</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Student</span><span class="w"> </span><span class="o">&amp;</span><span class="n">source</span><span class="p">);</span>
+<span class="n">Account</span><span class="o">::</span><span class="n">Account</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="o">&amp;</span><span class="n">source</span><span class="p">);</span>
+</code></pre></div>
 <h2 id="19">1.9 浅拷贝和深拷贝</h2>
+<ul>
+<li>
+<p>如果不提供自己写的copy constructor，编译器会生成默认的</p>
+</li>
+<li>
+<p>将目标对象的值逐个拷贝过来；</p>
+</li>
+<li>
+<p>如果是指针，拷贝的是值（指向的地址），而不是指向的对象（浅拷贝） </p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 编译器生成的拷贝构造函数</span>
+<span class="n">Account</span><span class="o">::</span><span class="n">Account</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="o">&amp;</span><span class="n">source</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">balance</span><span class="p">;</span><span class="w"> </span><span class="c1">// 浅拷贝  此时拷贝的是相同的地址</span>
+<span class="w">    </span><span class="k">this</span><span class="o">-&gt;</span><span class="n">balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="p">{</span><span class="o">*</span><span class="n">source</span><span class="p">.</span><span class="n">balance</span><span class="p">};</span><span class="w"> </span><span class="c1">//深拷贝 此时拷贝的是对象值</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+<li>
+<p>在析构函数中释放内存时，其他对象中的指针可能还在指向被释放的资源</p>
+</li>
+</ul>
 <h2 id="110-const">1.10 在类中使用const</h2>
+<ul>
+<li>
+<p>常函数</p>
+</li>
+<li>
+<p>函数名称后加const</p>
+</li>
+<li>
+<p>函数体内不可以修改类成员属性</p>
+<div class="highlight"><pre><span></span><code><span class="n">string</span><span class="w"> </span><span class="nf">get_name</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">//常函数</span>
+</code></pre></div>
+</li>
+<li>
+<p>常对象</p>
+</li>
+<li>
+<p>声明对象时前面加const</p>
+</li>
+<li>
+<p>不可以修改常对象的成员属性</p>
+</li>
+<li>
+<p>仅能调用常函数</p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">bob_account</span><span class="p">{</span><span class="s">&quot;Bob&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">200.0</span><span class="p">};</span><span class="w"> </span><span class="c1">// 常对象</span>
+</code></pre></div>
+</li>
+</ul>
 <h2 id="111-static">1.11 在类中使用static</h2>
+<ul>
+<li>静态成员变量</li>
+<li>所有对象共有同一份数据（数据共享） </li>
+<li>在类中声明，类外初始化</li>
+<li>静态成员函数</li>
+<li>所有对象共享同一个函数</li>
+<li>只能访问静态成员变量</li>
+</ul>
+<h3 id="_17">示例</h3>
+<ul>
+<li>在类中使用 static</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 类中的静态成员</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Account</span>
+<span class="p">{</span>
+<span class="k">private</span><span class="o">:</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">num_accounts</span><span class="p">;</span><span class="w"> </span><span class="c1">// 静态成员变量定义</span>
+
+<span class="k">public</span><span class="o">:</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">get_num_accounts</span><span class="p">();</span><span class="w"> </span><span class="c1">// 静态成员函数声明</span>
+<span class="w">    </span><span class="c1">// 更多代码</span>
+<span class="p">};</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">Account::get_num_accounts</span><span class="p">()</span>
+<span class="p">{</span><span class="w">   </span>
+<span class="w">    </span><span class="c1">// 静态成员方法只能访问静态成员变量</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">num_accounts</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="112-struct-class">1.12 struct 和 class区别</h2>
+<h3 id="_18">示例</h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Account</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;none&quot;</span><span class="p">};</span><span class="w"> </span><span class="c1">// 默认private</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Student</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;none&quot;</span><span class="p">};</span><span class="w"> </span><span class="c1">// 默认public</span>
+<span class="p">};</span>
+
+<span class="n">Account</span><span class="w"> </span><span class="n">aa</span><span class="p">;</span>
+<span class="n">aa</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;bob&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 错误，无法访问私有成员</span>
+
+<span class="n">Student</span><span class="w"> </span><span class="n">ss</span><span class="p">;</span>
+<span class="n">ss</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;alice&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">// 可以访问公有成员</span>
+</code></pre></div>
 
 
 
