@@ -1,0 +1,1900 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="个人">
+      
+      
+      
+        <link rel="canonical" href="https://laokeaime.github.io/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/OpenCV%26TensorRT%E5%9F%BA%E7%A1%80/tensorRT%E5%9F%BA%E7%A1%80/">
+      
+      
+        <link rel="prev" href="../opencv%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/">
+      
+      
+        <link rel="next" href="../../../%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D/%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="已更新内容的 RSS 订阅" href="../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>tensorRT基础 - keaiboom</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35e1ed30.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tensorrt" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="keaiboom" class="md-header__button md-logo" aria-label="keaiboom" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            keaiboom
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              tensorRT基础
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/laokeaime" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    laokeaime
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../Jetson%20Nano/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-tabs__link">
+          
+  
+    
+  
+  图像算法
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D/%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/" class="md-tabs__link">
+          
+  
+    
+  
+  个人介绍
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E8%A3%85%E6%9C%BA%E6%97%A5%E8%AE%B0/%E5%B0%8F%E4%B8%BB%E6%9C%BA/" class="md-tabs__link">
+          
+  
+    
+  
+  装机日记
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="keaiboom" class="md-nav__button md-logo" aria-label="keaiboom" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    keaiboom
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/laokeaime" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    laokeaime
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    首页
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    图像算法
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            图像算法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Jetson Nano
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Jetson Nano
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Jetson%20Nano/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    常用命令
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Jetson%20Nano/jetson_nano/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jetson Nano简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    C++技能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            C++技能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%20%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 基础语法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%20%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 程序流程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 函数
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E6%8C%87%E9%92%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 指针
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 字符和字符串
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2BOOP%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%BC%80%E5%8F%91/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ OOP面向对象开发
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++ 智能指针
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    STL标准模板库
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    CMake
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            CMake
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CMake/CMake%E5%9F%BA%E7%A1%80%E8%AF%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CMake基础课
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    OpenCV&TensorRT基础
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            OpenCV&TensorRT基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../opencv%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    opencv基本用法
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    tensorRT基础
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    tensorRT基础
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    一、准备知识
+  </a>
+  
+    <nav class="md-nav" aria-label="一、准备知识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 环境配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 编程模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    二、构建阶段
+  </a>
+  
+    <nav class="md-nav" aria-label="二、构建阶段">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 创建网络定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 配置参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-engine" class="md-nav__link">
+    2.3 生成Engine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 保存为模型文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    2.5 释放资源
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    三、运行时阶段
+  </a>
+  
+    <nav class="md-nav" aria-label="三、运行时阶段">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-engine" class="md-nav__link">
+    3.1 反序列化并创建Engine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-executioncontext" class="md-nav__link">
+    3.2 创建一个ExecutionContext
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 为推理填充输入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-enqueuev2" class="md-nav__link">
+    3.4 调用enqueueV2来执行推理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    3.5 释放资源
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    四、编译和运行
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    个人介绍
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            个人介绍
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D/%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    测试工程师面试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D/%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    算法工程师面试
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    装机日记
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            装机日记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%A3%85%E6%9C%BA%E6%97%A5%E8%AE%B0/%E5%B0%8F%E4%B8%BB%E6%9C%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    小主机
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    一、准备知识
+  </a>
+  
+    <nav class="md-nav" aria-label="一、准备知识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    1.1 环境配置
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    1.2 编程模型
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    二、构建阶段
+  </a>
+  
+    <nav class="md-nav" aria-label="二、构建阶段">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 创建网络定义
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 配置参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-engine" class="md-nav__link">
+    2.3 生成Engine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 保存为模型文件
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    2.5 释放资源
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    三、运行时阶段
+  </a>
+  
+    <nav class="md-nav" aria-label="三、运行时阶段">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-engine" class="md-nav__link">
+    3.1 反序列化并创建Engine
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-executioncontext" class="md-nav__link">
+    3.2 创建一个ExecutionContext
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 为推理填充输入
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-enqueuev2" class="md-nav__link">
+    3.4 调用enqueueV2来执行推理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    3.5 释放资源
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    四、编译和运行
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="tensorrt">TensorRT基础</h1>
+<table>
+<thead>
+<tr>
+<th>作者</th>
+<th>更新时间</th>
+<th>版本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@恩培-计算机视觉</td>
+<td>2023-02-03</td>
+<td>v 1.0</td>
+</tr>
+</tbody>
+</table>
+<p>[toc]</p>
+<h2 id="_1">一、准备知识</h2>
+<p>NVIDIA® TensorRT™是一个用于高性能深度学习的推理框架。它可以与TensorFlow、PyTorch和MXNet等训练框架相辅相成地工作。</p>
+<h3 id="11">1.1 环境配置</h3>
+<h4 id="a-cuda-driver">A. CUDA Driver</h4>
+<ul>
+<li>使用CUDA前，要求GPU驱动与<code>cuda</code> 的版本要匹配，匹配关系如下：</li>
+</ul>
+<blockquote>
+<p>参考：https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#cuda-major-component-versions__table-cuda-toolkit-driver-versions</p>
+</blockquote>
+<p><img src="https://enpei-md.oss-cn-hangzhou.aliyuncs.com/img202302061153154.png?x-oss-process=style/wp" style="zoom:50%;" /></p>
+<ul>
+<li>检查机器建议的驱动</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ubuntu-drivers<span class="w"> </span>devices
+
+//<span class="w"> </span>比如我的机器输出如下
+
+<span class="o">(</span>base<span class="o">)</span><span class="w"> </span>enpei@enpei-ubutnu-desktop:~$<span class="w"> </span>ubuntu-drivers<span class="w"> </span><span class="nv">devices</span>
+<span class="o">==</span><span class="w"> </span>/sys/devices/pci0000:00/0000:00:01.0/0000:01:00.0<span class="w"> </span><span class="o">==</span>
+modalias<span class="w"> </span>:<span class="w"> </span>pci:v000010DEd00001C03sv000010DEsd000011D7bc03sc00i00
+vendor<span class="w">   </span>:<span class="w"> </span>NVIDIA<span class="w"> </span>Corporation
+model<span class="w">    </span>:<span class="w"> </span>GP106<span class="w"> </span><span class="o">[</span>GeForce<span class="w"> </span>GTX<span class="w"> </span><span class="m">1060</span><span class="w"> </span>6GB<span class="o">]</span>
+driver<span class="w">   </span>:<span class="w"> </span>nvidia-driver-525<span class="w"> </span>-<span class="w"> </span>distro<span class="w"> </span>non-free<span class="w"> </span>recommended
+driver<span class="w">   </span>:<span class="w"> </span>nvidia-driver-510<span class="w"> </span>-<span class="w"> </span>distro<span class="w"> </span>non-free
+driver<span class="w">   </span>:<span class="w"> </span>nvidia-driver-390<span class="w"> </span>-<span class="w"> </span>distro<span class="w"> </span>non-free
+driver<span class="w">   </span>:<span class="w"> </span>nvidia-driver-520<span class="w"> </span>-<span class="w"> </span>third-party<span class="w"> </span>non-free
+driver<span class="w">   </span>:<span class="w"> </span>nvidia-driver-515-server<span class="w"> </span>-<span class="w"> </span>distro<span class="w"> </span>non-free
+driver<span class="w">   </span>:<span class="w"> </span>nvidia-driver-470<span class="w"> </span>-<span class="w"> </span>distro<span class="w"> </span>non-free
+driver<span class="w">   </span>:<span class="w"> </span>nvidia-driver-418-server<span class="w"> </span>-<span class="w"> </span>distro<span class="w"> </span>non-free
+driver<span class="w">   </span>:<span class="w"> </span>nvidia-driver-470-server<span class="w"> </span>-<span class="w"> </span>distro<span class="w"> </span>non-free
+driver<span class="w">   </span>:<span class="w"> </span>nvidia-driver-525-server<span class="w"> </span>-<span class="w"> </span>distro<span class="w"> </span>non-free
+driver<span class="w">   </span>:<span class="w"> </span>nvidia-driver-515<span class="w"> </span>-<span class="w"> </span>distro<span class="w"> </span>non-free
+driver<span class="w">   </span>:<span class="w"> </span>nvidia-driver-450-server<span class="w"> </span>-<span class="w"> </span>distro<span class="w"> </span>non-free
+driver<span class="w">   </span>:<span class="w"> </span>xserver-xorg-video-nouveau<span class="w"> </span>-<span class="w"> </span>distro<span class="w"> </span>free<span class="w"> </span><span class="nb">builtin</span>
+</code></pre></div>
+<p>上面信息提示了，当前我使用的GPU是[GeForce GTX 1060 6GB]，他推荐的（recommended）驱动是<code>nvidia-driver-525</code>。</p>
+<ul>
+<li>安装指定版本</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nvidia-driver-525
+</code></pre></div>
+<ul>
+<li>重启</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>reboot
+</code></pre></div>
+<ul>
+<li>检查安装</li>
+</ul>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nvidia-smi
+
+<span class="o">(</span>base<span class="o">)</span><span class="w"> </span>enpei@enpei-ubutnu-desktop:~$<span class="w"> </span>nvidia-smi
+Mon<span class="w"> </span>Feb<span class="w">  </span><span class="m">2</span><span class="w"> </span><span class="m">12</span>:23:45<span class="w"> </span><span class="m">2023</span>
++-----------------------------------------------------------------------------+
+<span class="p">|</span><span class="w"> </span>NVIDIA-SMI<span class="w"> </span><span class="m">525</span>.78.01<span class="w">    </span>Driver<span class="w"> </span>Version:<span class="w"> </span><span class="m">525</span>.78.01<span class="w">    </span>CUDA<span class="w"> </span>Version:<span class="w"> </span><span class="m">12</span>.0<span class="w">     </span><span class="p">|</span>
+<span class="p">|</span>-------------------------------+----------------------+----------------------+
+<span class="p">|</span><span class="w"> </span>GPU<span class="w">  </span>Name<span class="w">        </span>Persistence-M<span class="p">|</span><span class="w"> </span>Bus-Id<span class="w">        </span>Disp.A<span class="w"> </span><span class="p">|</span><span class="w"> </span>Volatile<span class="w"> </span>Uncorr.<span class="w"> </span>ECC<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Fan<span class="w">  </span>Temp<span class="w">  </span>Perf<span class="w">  </span>Pwr:Usage/Cap<span class="p">|</span><span class="w">         </span>Memory-Usage<span class="w"> </span><span class="p">|</span><span class="w"> </span>GPU-Util<span class="w">  </span>Compute<span class="w"> </span>M.<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">                               </span><span class="p">|</span><span class="w">                      </span><span class="p">|</span><span class="w">               </span>MIG<span class="w"> </span>M.<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="o">===============================</span>+<span class="o">======================</span>+<span class="o">======================</span><span class="p">|</span>
+<span class="p">|</span><span class="w">   </span><span class="m">0</span><span class="w">  </span>NVIDIA<span class="w"> </span>GeForce<span class="w"> </span>...<span class="w">  </span>Off<span class="w">  </span><span class="p">|</span><span class="w"> </span><span class="m">00000000</span>:01:00.0<span class="w">  </span>On<span class="w"> </span><span class="p">|</span><span class="w">                  </span>N/A<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span><span class="m">40</span>%<span class="w">   </span>29C<span class="w">    </span>P8<span class="w">     </span>9W<span class="w"> </span>/<span class="w"> </span>120W<span class="w"> </span><span class="p">|</span><span class="w">    </span>239MiB<span class="w"> </span>/<span class="w">  </span>6144MiB<span class="w"> </span><span class="p">|</span><span class="w">      </span><span class="m">0</span>%<span class="w">      </span>Default<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">                               </span><span class="p">|</span><span class="w">                      </span><span class="p">|</span><span class="w">                  </span>N/A<span class="w"> </span><span class="p">|</span>
++-------------------------------+----------------------+----------------------+
+
++-----------------------------------------------------------------------------+
+<span class="p">|</span><span class="w"> </span>Processes:<span class="w">                                                                  </span><span class="p">|</span>
+<span class="p">|</span><span class="w">  </span>GPU<span class="w">   </span>GI<span class="w">   </span>CI<span class="w">        </span>PID<span class="w">   </span>Type<span class="w">   </span>Process<span class="w"> </span>name<span class="w">                  </span>GPU<span class="w"> </span>Memory<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">        </span>ID<span class="w">   </span>ID<span class="w">                                                   </span>Usage<span class="w">      </span><span class="p">|</span>
+<span class="p">|</span><span class="o">=============================================================================</span><span class="p">|</span>
+<span class="p">|</span><span class="w">    </span><span class="m">0</span><span class="w">   </span>N/A<span class="w">  </span>N/A<span class="w">      </span><span class="m">1079</span><span class="w">      </span>G<span class="w">   </span>/usr/lib/xorg/Xorg<span class="w">                </span>102MiB<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w">    </span><span class="m">0</span><span class="w">   </span>N/A<span class="w">  </span>N/A<span class="w">      </span><span class="m">1387</span><span class="w">      </span>G<span class="w">   </span>/usr/bin/gnome-shell<span class="w">              </span>133MiB<span class="w"> </span><span class="p">|</span>
++-----------------------------------------------------------------------------+
+</code></pre></div>
+<p>可以看到当前安装的驱动版本是<code>525.78.01</code>，需要注意<code>CUDA Version: 12.0</code>指当前驱动支持的最高版本。</p>
+<h4 id="b-cuda">B. CUDA</h4>
+<ul>
+<li>选择对应版本：https://developer.nvidia.com/cuda-toolkit-archive</li>
+</ul>
+<p><img src="https://enpei-md.oss-cn-hangzhou.aliyuncs.com/img20230206123723.png?x-oss-process=style/wp" style="zoom:50%;" /></p>
+<ul>
+<li>根据提示安装，如我选择的11.8 版本的：https://developer.nvidia.com/cuda-11-8-0-download-archive?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=Ubuntu&amp;target_version=20.04&amp;target_type=deb_local</li>
+</ul>
+<p><img src="https://enpei-md.oss-cn-hangzhou.aliyuncs.com/img20230206123942.png?x-oss-process=style/wp" style="zoom:50%;" /></p>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-ubuntu2004.pin
+sudo<span class="w"> </span>mv<span class="w"> </span>cuda-ubuntu2004.pin<span class="w"> </span>/etc/apt/preferences.d/cuda-repository-pin-600
+wget<span class="w"> </span>https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda-repo-ubuntu2004-11-8-local_11.8.0-520.61.05-1_amd64.deb
+sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>cuda-repo-ubuntu2004-11-8-local_11.8.0-520.61.05-1_amd64.deb
+sudo<span class="w"> </span>cp<span class="w"> </span>/var/cuda-repo-ubuntu2004-11-8-local/cuda-*-keyring.gpg<span class="w"> </span>/usr/share/keyrings/
+sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>cuda
+</code></pre></div>
+<ul>
+<li>安装<code>nvcc</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>nvidia-cuda-toolkit
+</code></pre></div>
+<ul>
+<li>重启</li>
+</ul>
+<h4 id="c-cudnn">C. cuDNN</h4>
+<ul>
+<li>下载安装包：访问：https://developer.nvidia.com/zh-cn/cudnn，选择对应的版本，下载对应的安装包（建议使用Debian包安装）</li>
+</ul>
+<p><img src="https://enpei-md.oss-cn-hangzhou.aliyuncs.com/img20230206145759.png?x-oss-process=style/wp" style="zoom: 33%;" /></p>
+<p>比如我下载的是：<a href="https://developer.nvidia.com/downloads/c118-cudnn-local-repo-ubuntu2004-8708410-1amd64deb">Local Installer for Ubuntu20.04 x86_64 (Deb)</a>，下载后的文件名为<code>cudnn-local-repo-ubuntu2004-8.7.0.84_1.0-1_amd64.deb</code>。</p>
+<ul>
+<li>安装：</li>
+</ul>
+<blockquote>
+<p>参考链接：https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html </p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># 注意，运行下面的命令前，将下面的 X.Y和v8.x.x.x 替换成自己具体的CUDA 和 cuDNN版本，如我的CUDA 版本是11.8，cuDNN 版本是 8.7.0.84</span>
+
+sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>cudnn-local-repo-<span class="si">${</span><span class="nv">OS</span><span class="si">}</span>-8.x.x.x_1.0-1_amd64.deb
+<span class="c1"># 我的：sudo dpkg -i cudnn-local-repo-ubuntu2004-8.7.0.84_1.0-1_amd64.deb</span>
+
+sudo<span class="w"> </span>cp<span class="w"> </span>/var/cudnn-local-repo-*/cudnn-local-*-keyring.gpg<span class="w"> </span>/usr/share/keyrings/
+sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+
+
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span><span class="nv">libcudnn8</span><span class="o">=</span><span class="m">8</span>.x.x.x-1+cudaX.Y
+<span class="c1"># 我的：sudo apt-get install libcudnn8=8.7.0.84-1+cuda11.8</span>
+
+
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>libcudnn8-dev<span class="o">=</span><span class="m">8</span>.x.x.x-1+cudaX.Y
+<span class="c1"># 我的：sudo apt-get install libcudnn8-dev=8.7.0.84-1+cuda11.8</span>
+
+
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>libcudnn8-samples<span class="o">=</span><span class="m">8</span>.x.x.x-1+cudaX.Y
+<span class="c1"># 我的：sudo apt-get install libcudnn8-samples=8.7.0.84-1+cuda11.8</span>
+</code></pre></div>
+<ul>
+<li>验证</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># 复制文件</span>
+cp<span class="w"> </span>-r<span class="w"> </span>/usr/src/cudnn_samples_v8/<span class="w"> </span><span class="nv">$HOME</span>
+<span class="nb">cd</span><span class="w">  </span><span class="nv">$HOME</span>/cudnn_samples_v8/mnistCUDNN
+make<span class="w"> </span>clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make
+./mnistCUDNN
+</code></pre></div>
+<blockquote>
+<p>可能报错：test.c:1:10: fatal error: FreeImage.h: No such file or directory</p>
+<p>解决办法：sudo apt-get install libfreeimage3 libfreeimage-dev</p>
+</blockquote>
+<h4 id="d-tensorrt">D. TensorRT</h4>
+<ul>
+<li>访问：https://developer.nvidia.com/nvidia-tensorrt-8x-download 下载对应版本的TensorRT</li>
+</ul>
+<p><img src="https://enpei-md.oss-cn-hangzhou.aliyuncs.com/img202302061257704.png?x-oss-process=style/wp" style="zoom: 33%;" /></p>
+<p>比如我选择的是 8.5.3版本，下载完文件名为：<code>nv-tensorrt-local-repo-ubuntu2004-8.5.3-cuda-11.8_1.0-1_amd64.deb</code></p>
+<ul>
+<li>安装：</li>
+</ul>
+<blockquote>
+<p>参考地址：https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html#installing-debian</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c1"># 替换成自己的OS 和 版本信息</span>
+<span class="nv">os</span><span class="o">=</span><span class="s2">&quot;ubuntuxx04&quot;</span>
+<span class="nv">tag</span><span class="o">=</span><span class="s2">&quot;8.x.x-cuda-x.x&quot;</span>
+sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>nv-tensorrt-local-repo-<span class="si">${</span><span class="nv">os</span><span class="si">}</span>-<span class="si">${</span><span class="nv">tag</span><span class="si">}</span>_1.0-1_amd64.deb
+<span class="c1"># 我的：sudo dpkg -i nv-tensorrt-local-repo-ubuntu2004-8.5.3-cuda-11.8_1.0-1_amd64.deb</span>
+sudo<span class="w"> </span>cp<span class="w"> </span>/var/nv-tensorrt-local-repo-<span class="si">${</span><span class="nv">os</span><span class="si">}</span>-<span class="si">${</span><span class="nv">tag</span><span class="si">}</span>/*-keyring.gpg<span class="w"> </span>/usr/share/keyrings/
+<span class="c1"># 我的：sudo cp /var/nv-tensorrt-local-repo-ubuntu2004-8.5.3-cuda-11.8/*-keyring.gpg /usr/share/keyrings/</span>
+
+sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>tensorrt
+</code></pre></div>
+<ul>
+<li>验证：</li>
+</ul>
+<div class="highlight"><pre><span></span><code>dpkg<span class="w"> </span>-l<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>TensorRT
+
+<span class="c1"># 输出</span>
+ii<span class="w">  </span>libnvinfer-bin<span class="w">                                    </span><span class="m">8</span>.5.3-1+cuda11.8<span class="w">                    </span>amd64<span class="w">        </span>TensorRT<span class="w"> </span>binaries
+ii<span class="w">  </span>libnvinfer-dev<span class="w">                                    </span><span class="m">8</span>.5.3-1+cuda11.8<span class="w">                    </span>amd64<span class="w">        </span>TensorRT<span class="w"> </span>development<span class="w"> </span>libraries<span class="w"> </span>and<span class="w"> </span>headers
+ii<span class="w">  </span>libnvinfer-plugin-dev<span class="w">                             </span><span class="m">8</span>.5.3-1+cuda11.8<span class="w">                    </span>amd64<span class="w">        </span>TensorRT<span class="w"> </span>plugin<span class="w"> </span>libraries
+ii<span class="w">  </span>libnvinfer-plugin8<span class="w">                                </span><span class="m">8</span>.5.3-1+cuda11.8<span class="w">                    </span>amd64<span class="w">        </span>TensorRT<span class="w"> </span>plugin<span class="w"> </span>libraries
+ii<span class="w">  </span>libnvinfer-samples<span class="w">                                </span><span class="m">8</span>.5.3-1+cuda11.8<span class="w">                    </span>all<span class="w">          </span>TensorRT<span class="w"> </span>samples
+ii<span class="w">  </span>libnvinfer8<span class="w">                                       </span><span class="m">8</span>.5.3-1+cuda11.8<span class="w">                    </span>amd64<span class="w">        </span>TensorRT<span class="w"> </span>runtime<span class="w"> </span>libraries
+ii<span class="w">  </span>libnvonnxparsers-dev<span class="w">                              </span><span class="m">8</span>.5.3-1+cuda11.8<span class="w">                    </span>amd64<span class="w">        </span>TensorRT<span class="w"> </span>ONNX<span class="w"> </span>libraries
+ii<span class="w">  </span>libnvonnxparsers8<span class="w">                                 </span><span class="m">8</span>.5.3-1+cuda11.8<span class="w">                    </span>amd64<span class="w">        </span>TensorRT<span class="w"> </span>ONNX<span class="w"> </span>libraries
+ii<span class="w">  </span>libnvparsers-dev<span class="w">                                  </span><span class="m">8</span>.5.3-1+cuda11.8<span class="w">                    </span>amd64<span class="w">        </span>TensorRT<span class="w"> </span>parsers<span class="w"> </span>libraries
+ii<span class="w">  </span>libnvparsers8<span class="w">                                     </span><span class="m">8</span>.5.3-1+cuda11.8<span class="w">                    </span>amd64<span class="w">        </span>TensorRT<span class="w"> </span>parsers<span class="w"> </span>libraries
+ii<span class="w">  </span>tensorrt<span class="w">                                          </span><span class="m">8</span>.5.3.1-1+cuda11.8<span class="w">                  </span>amd64<span class="w">        </span>Meta<span class="w"> </span>package<span class="w"> </span><span class="k">for</span><span class="w"> </span>TensorRT
+</code></pre></div>
+<blockquote>
+<p>如果遇到<code>unmet dependencies</code>的问题, 一般是cuda cudnn没有安装好。TensorRT的<code>INCLUDE</code> 路径是 <code>/usr/include/x86_64-linux-gnu/</code>, <code>LIB</code>路径是<code>/usr/lib/x86_64-linux-gnu/</code>,Sample code在<code>/usr/src/tensorrt/samples</code>, <code>trtexec</code>在<code>/usr/src/tensorrt/bin</code>下。</p>
+</blockquote>
+<h3 id="12">1.2 编程模型</h3>
+<p>TensorRT分两个阶段运行</p>
+<ul>
+<li>构建（<code>Build</code>）阶段：你向TensorRT提供一个模型定义，TensorRT为目标GPU优化这个模型。这个过程可以离线运行。</li>
+<li>运行时（<code>Runtime</code>）阶段：你使用优化后的模型来运行推理。</li>
+</ul>
+<p>构建阶段后，我们可以将优化后的模型保存为模型文件，模型文件可以用于后续加载，以省略模型构建和优化的过程。</p>
+<h2 id="_2">二、构建阶段</h2>
+<blockquote>
+<p><em>样例代码：<code>6.trt_basic/src/build.cpp</code></em></p>
+</blockquote>
+<p>构建阶段的最高级别接口是 <code>Builder</code>。<code>Builder</code>负责优化一个模型，并产生<code>Engine</code>。通过如下接口创建一个<code>Builder</code> 。</p>
+<div class="highlight"><pre><span></span><code><span class="n">nvinfer1</span><span class="o">::</span><span class="n">IBuilder</span><span class="o">*</span><span class="w"> </span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nvinfer1</span><span class="o">::</span><span class="n">createInferBuilder</span><span class="p">(</span><span class="n">logger</span><span class="p">);</span>
+</code></pre></div>
+<p>要生成一个可以进行推理的<code>Engine</code>，一般需要以下三个步骤：</p>
+<ul>
+<li>创建一个网络定义</li>
+<li>填写<code>Builder</code>构建配置参数，告诉构建器应该如何优化模型</li>
+<li>调用<code>Builder</code>生成<code>Engine</code></li>
+</ul>
+<h3 id="21">2.1 创建网络定义</h3>
+<p><code>NetworkDefinition</code>接口被用来定义模型。如下所示：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// bit shift，移位：y左移N位，相当于 y * 2^N</span>
+<span class="c1">// kEXPLICIT_BATCH（显性Batch）为0，1U &lt;&lt; 0 = 1</span>
+<span class="c1">// static_cast：强制类型转换</span>
+<span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">explicitBatch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">nvinfer1</span><span class="o">::</span><span class="n">NetworkDefinitionCreationFlag</span><span class="o">::</span><span class="n">kEXPLICIT_BATCH</span><span class="p">);</span>
+<span class="n">nvinfer1</span><span class="o">::</span><span class="n">INetworkDefinition</span><span class="o">*</span><span class="w"> </span><span class="n">network</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="o">-&gt;</span><span class="n">createNetworkV2</span><span class="p">(</span><span class="n">explicitBatch</span><span class="p">);</span>
+</code></pre></div>
+<p>接口<code>createNetworkV2</code>接受配置参数，参数用按位标记的方式传入。比如上面激活<code>explicitBatch</code>，是通过<code>1U &lt;&lt; static_cast&lt;uint32_t&gt;(nvinfer1::NetworkDefinitionCreationFlag::kEXPLICIT_BATCH);</code> 将explicitBatch对应的配置位设置为1实现的。在新版本中，请使用<code>createNetworkV2</code>而非其他任何创建<code>NetworkDefinition</code> 的接口。</p>
+<p>将模型转移到TensorRT的最常见的方式是以ONNX格式从框架中导出（将在后续课程进行介绍），并使用TensorRT的ONNX解析器来填充网络定义。同时，也可以使用TensorRT的<code>Layer</code>和<code>Tensor</code>等接口一步一步地进行定义。通过接口来定义网络的代码示例如下：</p>
+<ul>
+<li>添加输入层</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">nvinfer1</span><span class="o">::</span><span class="n">ITensor</span><span class="o">*</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">network</span><span class="o">-&gt;</span><span class="n">addInput</span><span class="p">(</span><span class="s">&quot;data&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nvinfer1</span><span class="o">::</span><span class="n">DataType</span><span class="o">::</span><span class="n">kFLOAT</span><span class="p">,</span><span class="w"> </span><span class="n">nvinfer1</span><span class="o">::</span><span class="n">Dims4</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">input_size</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">});</span>
+</code></pre></div>
+<ul>
+<li>添加全连接层</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">nvinfer1</span><span class="o">::</span><span class="n">IFullyConnectedLayer</span><span class="o">*</span><span class="w"> </span><span class="n">fc1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">network</span><span class="o">-&gt;</span><span class="n">addFullyConnected</span><span class="p">(</span><span class="o">*</span><span class="n">input</span><span class="p">,</span><span class="w"> </span><span class="n">output_size</span><span class="p">,</span><span class="w"> </span><span class="n">fc1w</span><span class="p">,</span><span class="w"> </span><span class="n">fc1b</span><span class="p">);</span>
+</code></pre></div>
+<ul>
+<li>添加激活层</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">nvinfer1</span><span class="o">::</span><span class="n">IActivationLayer</span><span class="o">*</span><span class="w"> </span><span class="n">relu1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">network</span><span class="o">-&gt;</span><span class="n">addActivation</span><span class="p">(</span><span class="o">*</span><span class="n">fc1</span><span class="o">-&gt;</span><span class="n">getOutput</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">nvinfer1</span><span class="o">::</span><span class="n">ActivationType</span><span class="o">::</span><span class="n">kRELU</span><span class="p">);</span>
+</code></pre></div>
+<p>通过调用<code>network</code>的方法，我们可以构建网络的定义。</p>
+<p>无论你选择哪种方式，你还必须定义哪些张量是网络的输入和输出。没有被标记为输出的张量被认为是瞬时值，可以被构建者优化掉。输入和输出张量必须被命名，以便在运行时，TensorRT知道如何将输入和输出缓冲区绑定到模型上。示例代码如下：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 设置输出名字</span>
+<span class="n">relu1</span><span class="o">-&gt;</span><span class="n">getOutput</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">setName</span><span class="p">(</span><span class="s">&quot;output&quot;</span><span class="p">);</span>
+<span class="c1">// 标记输出</span>
+<span class="n">network</span><span class="o">-&gt;</span><span class="n">markOutput</span><span class="p">(</span><span class="o">*</span><span class="n">relu1</span><span class="o">-&gt;</span><span class="n">getOutput</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+</code></pre></div>
+<p>TensorRT的网络定义不会复制参数数组（如卷积的权重）。因此，在构建阶段完成之前，你不能释放这些数组的内存。</p>
+<h3 id="22">2.2 配置参数</h3>
+<p>下面我们来添加相关<code>Builder</code> 的配置。<code>createBuilderConfig</code>接口被用来指定TensorRT应该如何优化模型。如下：</p>
+<div class="highlight"><pre><span></span><code><span class="n">nvinfer1</span><span class="o">::</span><span class="n">IBuilderConfig</span><span class="o">*</span><span class="w"> </span><span class="n">config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="o">-&gt;</span><span class="n">createBuilderConfig</span><span class="p">();</span>
+</code></pre></div>
+<p>在可用的配置选项中，你可以控制TensorRT降低计算精度的能力，控制内存和运行时执行速度之间的权衡，并限制CUDA®内核的选择。由于构建器的运行可能需要几分钟或更长时间，你也可以控制构建器如何搜索内核，以及缓存搜索结果以用于后续运行。在我们的示例代码中，我们仅配置<code>workspace</code>（workspace 就是 tensorrt 里面算子可用的内存空间 ）大小和运行时<code>batch size</code> ，如下：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 配置运行时batch size参数</span>
+<span class="n">builder</span><span class="o">-&gt;</span><span class="n">setMaxBatchSize</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="c1">// 配置运行时workspace大小</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Workspace Size = &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">28</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024.0f</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024.0f</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;MB&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"> </span><span class="c1">// 256Mib</span>
+<span class="n">config</span><span class="o">-&gt;</span><span class="n">setMaxWorkspaceSize</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">28</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="23-engine">2.3 生成Engine</h3>
+<p>在你有了网络定义和<code>Builder</code>配置后，你可以调用<code>Builder</code>来创建<code>Engine</code>。<code>Builder</code>以一种称为<code>plan</code>的序列化形式创建<code>Engine</code>，它可以立即反序列化，也可以保存到磁盘上供以后使用。需要注意的是，由TensorRT创建的<code>Engine</code>是特定于创建它们的TensorRT版本和创建它们的GPU的，当迁移到别的GPU和TensorRT版本时，不能保证模型能够被正确执行。生成<code>Engine</code>的示例代码如下：</p>
+<div class="highlight"><pre><span></span><code><span class="n">nvinfer1</span><span class="o">::</span><span class="n">ICudaEngine</span><span class="o">*</span><span class="w"> </span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">builder</span><span class="o">-&gt;</span><span class="n">buildEngineWithConfig</span><span class="p">(</span><span class="o">*</span><span class="n">network</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">config</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="24">2.4 保存为模型文件</h3>
+<p>当有了<code>engine</code>后我们可以将其保存为文件，以供后续使用。代码如下：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 序列化</span>
+<span class="n">nvinfer1</span><span class="o">::</span><span class="n">IHostMemory</span><span class="o">*</span><span class="w"> </span><span class="n">engine_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">serialize</span><span class="p">();</span>
+<span class="c1">// 保存至文件</span>
+<span class="n">std</span><span class="o">::</span><span class="n">ofstream</span><span class="w"> </span><span class="n">engine_file</span><span class="p">(</span><span class="s">&quot;mlp.engine&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">ios</span><span class="o">::</span><span class="n">binary</span><span class="p">);</span>
+<span class="n">engine_file</span><span class="p">.</span><span class="n">write</span><span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">engine_data</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">engine_data</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">());</span>
+</code></pre></div>
+<h3 id="25">2.5 释放资源</h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// 理论上，前面申请的资源都应该在这里释放，但是这里只是为了演示，所以只释放了部分资源</span>
+<span class="n">file</span><span class="p">.</span><span class="n">close</span><span class="p">();</span><span class="w">             </span><span class="c1">// 关闭文件</span>
+<span class="k">delete</span><span class="w"> </span><span class="n">serialized_engine</span><span class="p">;</span><span class="w"> </span><span class="c1">// 释放序列化的engine</span>
+<span class="k">delete</span><span class="w"> </span><span class="n">engine</span><span class="p">;</span><span class="w">            </span><span class="c1">// 释放engine</span>
+<span class="k">delete</span><span class="w"> </span><span class="n">config</span><span class="p">;</span><span class="w">            </span><span class="c1">// 释放config</span>
+<span class="k">delete</span><span class="w"> </span><span class="n">network</span><span class="p">;</span><span class="w">           </span><span class="c1">// 释放network</span>
+<span class="k">delete</span><span class="w"> </span><span class="n">builder</span><span class="p">;</span><span class="w">           </span><span class="c1">// 释放builder</span>
+</code></pre></div>
+<h2 id="_3">三、运行时阶段</h2>
+<blockquote>
+<p>样例代码: <em><code>6.trt_basic/src/runtime.cu</code></em>
+</p>
+</blockquote>
+<p>TensorRT运行时的最高层级接口是<code>Runtime</code> 如下：</p>
+<div class="highlight"><pre><span></span><code><span class="n">nvinfer1</span><span class="o">::</span><span class="n">IRuntime</span><span class="w"> </span><span class="o">*</span><span class="n">runtime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nvinfer1</span><span class="o">::</span><span class="n">createInferRuntime</span><span class="p">(</span><span class="n">looger</span><span class="p">);</span>
+</code></pre></div>
+<p>当使用<code>Runtime</code>时，你通常会执行以下步骤：</p>
+<ul>
+<li>反序列化一个计划以创建一个<code>Engine</code>。</li>
+<li>从引擎中创建一个<code>ExecutionContext</code>。</li>
+</ul>
+<p>然后，重复进行：</p>
+<ul>
+<li>为Inference填充输入缓冲区。</li>
+<li>在<code>ExecutionContext</code>调用<code>enqueueV2()</code>来运行Inference</li>
+</ul>
+<h3 id="31-engine">3.1 反序列化并创建Engine</h3>
+<p>通过读取模型文件并反序列化，我们可以利用runtime生成<code>Engine</code>。如下：</p>
+<div class="highlight"><pre><span></span><code><span class="n">nvinfer1</span><span class="o">::</span><span class="n">ICudaEngine</span><span class="w"> </span><span class="o">*</span><span class="n">engine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">runtime</span><span class="o">-&gt;</span><span class="n">deserializeCudaEngine</span><span class="p">(</span><span class="n">engine_data</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">engine_data</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="k">nullptr</span><span class="p">);</span>
+</code></pre></div>
+<p><code>Engine</code>接口代表一个优化的模型。你可以查询<code>Engine</code>关于网络的输入和输出张量的信息，如：预期尺寸、数据类型、数据格式等。</p>
+<h3 id="32-executioncontext">3.2 创建一个<code>ExecutionContext</code></h3>
+<p>有了Engine后我们需要创建<code>ExecutionContext</code> 以用于后面的推理执行。</p>
+<div class="highlight"><pre><span></span><code><span class="n">nvinfer1</span><span class="o">::</span><span class="n">IExecutionContext</span><span class="w"> </span><span class="o">*</span><span class="n">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">engine</span><span class="o">-&gt;</span><span class="n">createExecutionContext</span><span class="p">();</span>
+</code></pre></div>
+<p>从<code>Engine</code>创建的<code>ExecutionContext</code>接口是调用推理的主要接口。<code>ExecutionContext</code>包含与特定调用相关的所有状态，因此你可以有多个与单个引擎相关的上下文，且并行运行它们，在这里我们暂不展开了解，仅做介绍。</p>
+<h3 id="33">3.3 为推理填充输入</h3>
+<p>我们首先创建CUDA Stream用于推理的执行。</p>
+<blockquote>
+<p>stream 可以理解为一个任务队列，调用以 async 结尾的 api 时，是把任务加到队列，但执行是异步的，当有多个任务且互相没有依赖时可以创建多个 stream 分别用于不同的任务，任务直接的执行可以被 cuda driver 调度，这样某个任务做 memcpy时 另外一个任务可以执行计算任务，这样可以提高 gpu利用率。</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="n">cudaStream_t</span><span class="w"> </span><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="c1">// 创建CUDA Stream用于context推理</span>
+<span class="n">cudaStreamCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">stream</span><span class="p">);</span>
+</code></pre></div>
+<p>然后我们同时在CPU和GPU上分配输入输出内存，并将输入数据从CPU拷贝到GPU上。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 输入数据</span>
+<span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">h_in_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">float</span><span class="p">[</span><span class="mi">3</span><span class="p">]{</span><span class="mf">1.4</span><span class="p">,</span><span class="w"> </span><span class="mf">3.2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.1</span><span class="p">};</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">in_data_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">d_in_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="c1">// 输出数据</span>
+<span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">h_out_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">float</span><span class="p">[</span><span class="mi">2</span><span class="p">]{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">};</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">out_data_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">d_out_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">nullptr</span><span class="p">;</span>
+<span class="c1">// 申请GPU上的内存</span>
+<span class="n">cudaMalloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">d_in_data</span><span class="p">,</span><span class="w"> </span><span class="n">in_data_size</span><span class="p">);</span>
+<span class="n">cudaMalloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">d_out_data</span><span class="p">,</span><span class="w"> </span><span class="n">out_data_size</span><span class="p">);</span>
+<span class="c1">// 拷贝数据</span>
+<span class="n">cudaMemcpyAsync</span><span class="p">(</span><span class="n">d_in_data</span><span class="p">,</span><span class="w"> </span><span class="n">h_in_data</span><span class="p">,</span><span class="w"> </span><span class="n">in_data_size</span><span class="p">,</span><span class="w"> </span><span class="n">cudaMemcpyHostToDevice</span><span class="p">,</span><span class="w"> </span><span class="n">stream</span><span class="p">);</span>
+<span class="c1">// enqueueV2中是把输入输出的内存地址放到bindings这个数组中，需要写代码时确定这些输入输出的顺序（这样容易出错，而且不好定位bug，所以新的接口取消了这样的方式，不过目前很多官方 sample 也在用v2）</span>
+<span class="kt">float</span><span class="o">*</span><span class="w"> </span><span class="n">bindings</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">d_in_data</span><span class="p">,</span><span class="w"> </span><span class="n">d_out_data</span><span class="p">};</span>
+</code></pre></div>
+<h3 id="34-enqueuev2">3.4 调用enqueueV2来执行推理</h3>
+<p>将数据从CPU中拷贝到GPU上后，便可以调用<code>enqueueV2</code> 进行推理。代码如下：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 执行推理</span>
+<span class="kt">bool</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="o">-&gt;</span><span class="n">enqueueV2</span><span class="p">((</span><span class="kt">void</span><span class="o">**</span><span class="p">)</span><span class="n">bindings</span><span class="p">,</span><span class="w"> </span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="k">nullptr</span><span class="p">);</span>
+<span class="c1">// 把数据从GPU拷贝回host</span>
+<span class="n">cudaMemcpyAsync</span><span class="p">(</span><span class="n">h_out_data</span><span class="p">,</span><span class="w"> </span><span class="n">d_out_data</span><span class="p">,</span><span class="w"> </span><span class="n">out_data_size</span><span class="p">,</span><span class="w"> </span><span class="n">cudaMemcpyDeviceToHost</span><span class="p">,</span><span class="w"> </span><span class="n">stream</span><span class="p">);</span>
+<span class="c1">// stream同步，等待stream中的操作完成</span>
+<span class="n">cudaStreamSynchronize</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+<span class="c1">// 输出</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;输出信息: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">host_output_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">host_output_data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="35">3.5 释放资源</h3>
+<div class="highlight"><pre><span></span><code><span class="n">cudaStreamDestroy</span><span class="p">(</span><span class="n">stream</span><span class="p">);</span>
+<span class="n">cudaFree</span><span class="p">(</span><span class="n">device_input_data_address</span><span class="p">);</span>
+<span class="n">cudaFree</span><span class="p">(</span><span class="n">device_output_data_address</span><span class="p">);</span><span class="w">   </span>
+<span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">host_input_data</span><span class="p">;</span>
+<span class="k">delete</span><span class="p">[]</span><span class="w"> </span><span class="n">host_output_data</span><span class="p">;</span>
+
+<span class="k">delete</span><span class="w"> </span><span class="n">context</span><span class="p">;</span>
+<span class="k">delete</span><span class="w"> </span><span class="n">engine</span><span class="p">;</span>
+<span class="k">delete</span><span class="w"> </span><span class="n">runtime</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="_4">四、编译和运行</h2>
+<blockquote>
+<p>样例代码: <em><code>6.trt_basic/CMakeLists.txt</code></em>
+</p>
+</blockquote>
+<p>利用我们前面cmake课程介绍的添加自定义模块的方法，创建<code>cmake/FindTensorRT.cmake</code>文件，我们运行下面的命令以编译示例代码：</p>
+<div class="highlight"><pre><span></span><code>cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>
+cmake<span class="w"> </span>--build<span class="w"> </span>build
+</code></pre></div>
+<p>然后执行下面命令，build将生成mlp.engine，而runtime将读取mlp.engine并执行：</p>
+<div class="highlight"><pre><span></span><code>./build/build
+./build/runtime
+</code></pre></div>
+<p>最后将看到输出结果：</p>
+<div class="highlight"><pre><span></span><code>输出信息:<span class="w"> </span><span class="m">0</span>.970688<span class="w"> </span><span class="m">0</span>.999697
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      keaiboom
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/laokeaime" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:feilongbi@126.com" target="_blank" rel="noopener" title="" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.7l167.6-182.9c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../../../javascripts/baidu-tongji.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

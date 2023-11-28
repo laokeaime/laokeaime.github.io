@@ -76,6 +76,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://laokeaime.github.io/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/OpenCV%26TensorRT%E5%9F%BA%E7%A1%80/opencv%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</loc>
+         <lastmod>2023-11-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://laokeaime.github.io/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/OpenCV%26TensorRT%E5%9F%BA%E7%A1%80/tensorRT%E5%9F%BA%E7%A1%80/</loc>
+         <lastmod>2023-11-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://laokeaime.github.io/%E8%A3%85%E6%9C%BA%E6%97%A5%E8%AE%B0/%E5%B0%8F%E4%B8%BB%E6%9C%BA/</loc>
          <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
