@@ -16,7 +16,7 @@
         <link rel="prev" href="../../C%2B%2B%E6%8A%80%E8%83%BD/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/">
       
       
-        <link rel="next" href="../../../%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D/%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/">
+        <link rel="next" href="../../../%E8%A3%85%E6%9C%BA%E6%97%A5%E8%AE%B0/%E5%B0%8F%E4%B8%BB%E6%9C%BA/">
       
       
         <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../../feed_rss_created.xml">
@@ -408,6 +408,8 @@
   
     
     
+      
+        
       
         
       
@@ -954,6 +956,77 @@
 
               
             
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    装机日记
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            装机日记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E8%A3%85%E6%9C%BA%E6%97%A5%E8%AE%B0/%E5%B0%8F%E4%B8%BB%E6%9C%BA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    小主机
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1293,7 +1366,7 @@ git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </spa
 <span class="nb">cd</span><span class="w"> </span>CMake
 <span class="c1"># 你使用`--prefix`来指定安装路径，或者去掉`--prefix`,安装在默认路径。</span>
 ./bootstrap<span class="w"> </span>--prefix<span class="o">=</span>&lt;安装路径&gt;<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>make<span class="w"> </span>install
-
+./bootstrap<span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>-j4<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>make<span class="w"> </span>install
 <span class="c1"># 验证</span>
 cmake<span class="w"> </span>--version
 </code></pre></div></p>
@@ -1370,7 +1443,7 @@ account_dir/
 <span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.10</span><span class="p">)</span>
 
 <span class="c"># 项目名称</span>
-<span class="nb">project</span><span class="p">(</span><span class="s">test_account</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">test_account</span><span class="p">)</span><span class="w">  </span>
 
 <span class="c"># 添加执行文件</span>
 <span class="nb">add_executable</span><span class="p">(</span><span class="s">test_account</span><span class="w"> </span><span class="s">test_account.cpp</span><span class="p">)</span>
@@ -1448,7 +1521,7 @@ libAccount.so<span class="w"> </span><span class="o">=</span>&gt;<span class="w"
 <span class="c"># 添加头文件</span>
 <span class="nb">target_include_directories</span><span class="p">(</span><span class="s">test_account</span><span class="w"> </span><span class="s">PUBLIC</span><span class="w"> </span><span class="s2">&quot;./account_dir&quot;</span><span class="p">)</span>
 <span class="c"># 添加链接库</span>
-<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">test_account</span><span class="w"> </span><span class="s">Account</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">test_account</span><span class="w"> </span><span class="s">Account</span><span class="p">)</span><span class="w">    </span>
 </code></pre></div>
 <h4 id="236-cmake-publicprivateinterface">2.3.6 CMake 中的 PUBLIC、PRIVATE、INTERFACE</h4>
 <p>CMake中经常使用<code>target_...()</code>类似的命令，一般这样的命令支持通过<code>PUBLIC</code>、<code>PRIVATE</code>、<code>INTERFACE</code>关键字来控制传播。</p>
