@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://laokeaime.github.io/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/Jetson%20Nano/jetson_nano/">
+        <link rel="canonical" href="https://laokeaime.github.io/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/Jetson%20Nano/docker%20%E5%B8%B8%E7%94%A8%E7%8E%AF%E5%A2%83/">
       
       
-        <link rel="prev" href="../%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+        <link rel="prev" href="../jetson_nano/">
       
       
-        <link rel="next" href="../docker%20%E5%B8%B8%E7%94%A8%E7%8E%AF%E5%A2%83/">
+        <link rel="next" href="../../docker%20%E4%BD%BF%E7%94%A8/docker%20%E7%94%A8%E6%B3%95/">
       
       
         <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../../feed_rss_created.xml">
@@ -27,7 +27,7 @@
     
     
       
-        <title>Jetson Nano简介 - keaiboom</title>
+        <title>docker 常见问题 - keaiboom</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#jetson_nano" class="md-skip">
+        <a href="#docker" class="md-skip">
           跳转至
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Jetson Nano简介
+              docker 常见问题
             
           </span>
         </div>
@@ -504,6 +504,26 @@
                 
   
   
+  
+    <li class="md-nav__item">
+      <a href="../jetson_nano/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jetson Nano简介
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -515,28 +535,18 @@
         
       
       
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
   
   <span class="md-ellipsis">
-    Jetson Nano简介
+    docker 常见问题
   </span>
   
 
-      </a>
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../docker%20%E5%B8%B8%E7%94%A8%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -545,6 +555,40 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nvidia" class="md-nav__link">
+    通过NVIDIA 官方的镜像地址，拉去对应设备镜像
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jetson-nvidia-docker-pytorch-gpu__" class="md-nav__link">
+    jetson 拉取nvidia 官方docker pytorch GPU镜像报错解决__原链接
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1207,6 +1251,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#nvidia" class="md-nav__link">
+    通过NVIDIA 官方的镜像地址，拉去对应设备镜像
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jetson-nvidia-docker-pytorch-gpu__" class="md-nav__link">
+    jetson 拉取nvidia 官方docker pytorch GPU镜像报错解决__原链接
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1223,421 +1289,106 @@
   
 
 
-<h1 id="jetson_nano">jetson_nano</h1>
-<h1 id="nano">nano踩坑</h1>
-<h2 id="_1">烧录</h2>
-<p>1 官网下载文件</p>
-<p>Jetson-210_Linux_R32.6.1_aarch64.tbz2</p>
-<p>Tegra_Linux_Sample-Root-Filesystem_R32.6.1_aarch64.tbz2</p>
-<p>2 在虚拟机创建目录</p>
-<p>mkdir -p nvidia/nvidia_sdk/JetPack_4.6_Linux_JETSON_NANO_TARGETS</p>
-<p>将上面2个文件拖进来并解压，严格按照一下的步骤</p>
-<div class="highlight"><pre><span></span><code>tar xf Jetson-210_Linux_R32.6.1_aarch64.tbz2
-cd Linux_for_Tegra/rootfs/
-sudo tar xpf ../../Tegra_Linux_Sample-Root-Filesystem_R32.6.1_aarch64.tbz2
-cd ../
-sudo ./apply_binaries.sh
+<h1 id="docker">docker拉取常用环境</h1>
+<h2 id="nvidia">通过NVIDIA 官方的<a href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-pytorch">镜像地址</a>，拉去对应设备镜像</h2>
+<ul>
+<li>JetPack 5.1 (L4T R35.2.1)</li>
+<li>JetPack 5.0.2 (L4T R35.1.0)</li>
+<li>JetPack 5.0.1 Developer Preview (L4T R34.1.1)</li>
+<li>JetPack 5.0.0 Developer Preview (L4T R34.1.0)</li>
+<li>JetPack 4.6.1 (L4T R32.7.1)</li>
+<li>JetPack 4.6 (L4T R32.6.1)</li>
+<li>JetPack 4.5 (L4T R32.5.0)</li>
+<li>JetPack 4.4.1 (L4T R32.4.4)</li>
+<li>JetPack 4.4 (L4T R32.4.3)</li>
+<li>
+<p>JetPack 4.4 Developer Preview (L4T R32.4.2)</p>
+</li>
+<li>
+<p>jetson nano 4.6.4 拉取命令<code>docker pull nvcr.io/nvidia/l4t-pytorch:r32.7.1-pth1.10-py3</code></p>
+</li>
+<li>
+<p>启动容器<code>sudo docker run --runtime nvidia --network host -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix nvcr.io/nvidia/l4t-base:r32.3.1</code></p>
+</li>
+<li>解释：<ul>
+<li><code>sudo docker run</code>：以Docker容器方式运行指定的镜像。</li>
+<li><code>--runtime nvidia</code>：指定使用NVIDIA的容器运行时。</li>
+<li><code>--network host</code>：将主机网络配置直接映射到容器中，使容器可以访问主机网络。</li>
+<li><code>-it</code>：以交互式终端模式运行容器。</li>
+<li><code>-e DISPLAY=$DISPLAY</code>：将主机的DISPLAY环境变量传递给容器，以实现图形界面的显示。</li>
+<li><code>-v /tmp/.X11-unix/:/tmp/.X11-unix</code>：将主机的X11 UNIX套接字目录挂载到容器中，以实现图形界面的显示。</li>
+<li><code>nvcr.io/nvidia/l4t-base:r32.3.1</code>：指定使用的镜像名称和版本。</li>
+</ul>
+</li>
+</ul>
+<h2 id="jetson-nvidia-docker-pytorch-gpu__">jetson 拉取nvidia 官方docker pytorch GPU镜像报错解决__<a href="https://zhuanlan.zhihu.com/p/490306332">原链接</a></h2>
+<p>解决报错：</p>
+<div class="highlight"><pre><span></span><code>OSError:<span class="w"> </span>libcurand.so.10:<span class="w"> </span>cannot<span class="w"> </span>open<span class="w"> </span>shared<span class="w"> </span>object<span class="w"> </span>file:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
+OSError:<span class="w"> </span>/usr/lib/aarch64-linux-gnu/libcudnn.so.8:<span class="w"> </span>file<span class="w"> </span>too<span class="w"> </span>short
 </code></pre></div>
-<p>3 烧录系统</p>
-<p>在nvidia/nvidia_sdk/JetPack_4.6_Linux_JETSON_NANO_TARGETS目录下</p>
-<div class="highlight"><pre><span></span><code>sudo ./flash.sh jetson-nano-emmc mmcblk0p1
+<p>启动容器(这里要挂在目录，因为等会进去导入torch包会报错，需要将宿主机上的一些包拷贝到容器里面去)</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--runtime<span class="w"> </span>nvidia<span class="w"> </span>--network<span class="w"> </span>host<span class="w"> </span>-v<span class="w"> </span>/home/nvidia/renhe/docker_test/panel_inference/:/root/code/<span class="w"> </span>nvcr.io/nvidia/l4t-pytorch:r32.6.1-pth1.8-py3
 </code></pre></div>
-<h2 id="tf">修改TF卡启动</h2>
-<p>https://note.youdao.com/ynoteshare/index.html?id=eef9a2e70144fc9db4621d8c58f1ed02&amp;type=note&amp;_time=1666269422642</p>
-<p>1 安装dtc软件</p>
-<div class="highlight"><pre><span></span><code>sudo apt-get install device-tree-compiler
+<p>进入到容器中尝试导入 torch</p>
+<div class="highlight"><pre><span></span><code>root@nvidia-desktop:/#<span class="w"> </span>python3
+Python<span class="w"> </span><span class="m">3</span>.6.9<span class="w"> </span><span class="o">(</span>default,<span class="w"> </span>Jan<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">2021</span>,<span class="w"> </span><span class="m">15</span>:33:00<span class="o">)</span>
+<span class="o">[</span>GCC<span class="w"> </span><span class="m">8</span>.4.0<span class="o">]</span><span class="w"> </span>on<span class="w"> </span>linux
+Type<span class="w"> </span><span class="s2">&quot;help&quot;</span>,<span class="w"> </span><span class="s2">&quot;copyright&quot;</span>,<span class="w"> </span><span class="s2">&quot;credits&quot;</span><span class="w"> </span>or<span class="w"> </span><span class="s2">&quot;license&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information.
+&gt;&gt;&gt;<span class="w"> </span>import<span class="w"> </span>torch
+Traceback<span class="w"> </span><span class="o">(</span>most<span class="w"> </span>recent<span class="w"> </span>call<span class="w"> </span>last<span class="o">)</span>:
+<span class="w">  </span>File<span class="w"> </span><span class="s2">&quot;&lt;stdin&gt;&quot;</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;module&gt;
+<span class="w">  </span>File<span class="w"> </span><span class="s2">&quot;/usr/local/lib/python3.6/dist-packages/torch/__init__.py&quot;</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">195</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;module&gt;
+<span class="w">    </span>_load_global_deps<span class="o">()</span>
+<span class="w">  </span>File<span class="w"> </span><span class="s2">&quot;/usr/local/lib/python3.6/dist-packages/torch/__init__.py&quot;</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">148</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>_load_global_deps
+<span class="w">    </span>ctypes.CDLL<span class="o">(</span>lib_path,<span class="w"> </span><span class="nv">mode</span><span class="o">=</span>ctypes.RTLD_GLOBAL<span class="o">)</span>
+<span class="w">  </span>File<span class="w"> </span><span class="s2">&quot;/usr/lib/python3.6/ctypes/__init__.py&quot;</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">348</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>__init__
+<span class="w">    </span>self._handle<span class="w"> </span><span class="o">=</span><span class="w"> </span>_dlopen<span class="o">(</span>self._name,<span class="w"> </span>mode<span class="o">)</span>
+OSError:<span class="w"> </span>libcurand.so.10:<span class="w"> </span>cannot<span class="w"> </span>open<span class="w"> </span>shared<span class="w"> </span>object<span class="w"> </span>file:<span class="w"> </span>No<span class="w"> </span>such<span class="w"> </span>file<span class="w"> </span>or<span class="w"> </span>directory
 </code></pre></div>
-<p>2 反编译dts源文件 （针对不同jetpack，修改对应路径）</p>
-<div class="highlight"><pre><span></span><code>cd ~/nvidia/nvidia_sdk/JetPack_4.6_Linux_JETSON_NANO_TARGETS/Linux_for_Tegra/kernel/dtb
-dtc -I dtb -O dts -o tegra210-p3448-0002-p3449-0000-b00.dts tegra210-p3448-0002-p3449-0000-b00.dtb
+<p>解决这个错误需要把宿主机下面这个目录里面的包拷贝到容器内对应位置</p>
+<div class="highlight"><pre><span></span><code>/usr/local/cuda-10.2/targets/aarch64-linux/lib/
 </code></pre></div>
-<p>3 修改tegra210-p3448-0002-p3449-0000-b00.dts源文件，找到如下部分，修改红色位置。</p>
-<div class="highlight"><pre><span></span><code>         sdhci@700b0400 {
-                compatible = &quot;nvidia,tegra210-sdhci&quot;;
-                reg = &lt;0x0 0x700b0400 0x0 0x200&gt;;
-                interrupts = &lt;0x0 0x13 0x4&gt;;
-                aux-device-name = &quot;sdhci-tegra.2&quot;;
-                iommus = &lt;0x30 0x1b&gt;;
-                nvidia,runtime-pm-type = &lt;0x0&gt;;
-                clocks = &lt;0x26 0x45 0x26 0xf3 0x26 0x136 0x26 0xc1&gt;;
-                clock-names = &quot;sdmmc&quot;, &quot;pll_p&quot;, &quot;pll_c4_out2&quot;, &quot;sdmmc_legacy_tm&quot;;
-                resets = &lt;0x26 0x45&gt;;
-                reset-names = &quot;sdhci&quot;;
-               #1 status = &quot;okay&quot;;
-                tap-delay = &lt;0x3&gt;;
-                trim-delay = &lt;0x3&gt;;
-                mmc-ocr-mask = &lt;0x3&gt;;
-                max-clk-limit = &lt;0xc28cb00&gt;;
-                ddr-clk-limit = &lt;0x2dc6c00&gt;;
-                bus-width = &lt;0x4&gt;;
-                calib-3v3-offsets = &lt;0x7d&gt;;
-                calib-1v8-offsets = &lt;0x7b7b&gt;;
-                compad-vref-3v3 = &lt;0x7&gt;;
-                compad-vref-1v8 = &lt;0x7&gt;;
-                pll_source = &quot;pll_p&quot;, &quot;pll_c4_out2&quot;;
-                ignore-pm-notify;
-                cap-mmc-highspeed;
-                cap-sd-highspeed;
-                nvidia,en-io-trim-volt;
-                nvidia,en-periodic-calib;
-                cd-inverted;
-                wp-inverted;
-                pwrdet-support;
-                nvidia,min-tap-delay = &lt;0x6a&gt;;
-                nvidia,max-tap-delay = &lt;0xb9&gt;;
-                pinctrl-names = &quot;sdmmc_schmitt_enable&quot;, &quot;sdmmc_schmitt_disable&quot;, &quot;sdmmc_clk_schmitt_enable&quot;, &quot;sdmmc_clk_schmitt_disable&quot;, &quot;sdmmc_drv_code&quot;, &quot;sdmmc_default_drv_code&quot;, &quot;sdmmc_e_33v_enable&quot;, &quot;sdmmc_e_33v_disable&quot;;
-                pinctrl-0 = &lt;0x8c&gt;;
-                pinctrl-1 = &lt;0x8d&gt;;
-                pinctrl-2 = &lt;0x8e&gt;;
-                pinctrl-3 = &lt;0x8f&gt;;
-                pinctrl-4 = &lt;0x90&gt;;
-                pinctrl-5 = &lt;0x91&gt;;
-                pinctrl-6 = &lt;0x92&gt;;
-                pinctrl-7 = &lt;0x93&gt;;
-                vqmmc-supply = &lt;0x3b&gt;;
-                vmmc-supply = &lt;0x4c&gt;;
-                # 2 cd-gpios = &lt;0x5b 0xc2 0x0&gt;;
-                # 3 sd-uhs-sdr104;
-                # 4 sd-uhs-sdr50;
-                # 5 sd-uhs-sdr25;
-                # 6 sd-uhs-sdr12;
-                mmc-ddr-1_8v;
-                # 7 no-mmc;
-                # 8 uhs-mask = &lt;0xc&gt;;
-                linux,phandle = &lt;0xba&gt;;
-                phandle = &lt;0xba&gt;;
+<p>首先拷贝到挂在目录里面</p>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>-rf<span class="w"> </span>/usr/local/cuda-10.2/targets/aarch64-linux/lib/<span class="w"> </span>/home/nvidia/renhe/docker_test/panel_inference/
 </code></pre></div>
-<p>4 编译dtb文件</p>
-<div class="highlight"><pre><span></span><code>dtc -I dts -O dtb -o tegra210-p3448-0002-p3449-0000-b00.dtb tegra210-p3448-0002-p3449-0000-b00.dts
+<p>然后进入容器,将拷贝进来的包复制到容器对应路径</p>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>-rf<span class="w"> </span>/root/code/lib/<span class="w"> </span>/usr/local/cuda-10.2/targets/aarch64-linux/
 </code></pre></div>
-<p>5 烧录系统，jetson nano 需进入recovery模式，连接到Ubuntu电脑。</p>
-<div class="highlight"><pre><span></span><code>cd ~/nvidia/nvidia_sdk/JetPack_4.6_Linux_JETSON_NANO_TARGETS/Linux_for_Tegra
+<p>再次尝试导入torch</p>
+<div class="highlight"><pre><span></span><code>root@nvidia-desktop:/#<span class="w"> </span>python3
+Python<span class="w"> </span><span class="m">3</span>.6.9<span class="w"> </span><span class="o">(</span>default,<span class="w"> </span>Jan<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">2021</span>,<span class="w"> </span><span class="m">15</span>:33:00<span class="o">)</span>
+<span class="o">[</span>GCC<span class="w"> </span><span class="m">8</span>.4.0<span class="o">]</span><span class="w"> </span>on<span class="w"> </span>linux
+Type<span class="w"> </span><span class="s2">&quot;help&quot;</span>,<span class="w"> </span><span class="s2">&quot;copyright&quot;</span>,<span class="w"> </span><span class="s2">&quot;credits&quot;</span><span class="w"> </span>or<span class="w"> </span><span class="s2">&quot;license&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information.
+&gt;&gt;&gt;<span class="w"> </span>import<span class="w"> </span>torch
+Traceback<span class="w"> </span><span class="o">(</span>most<span class="w"> </span>recent<span class="w"> </span>call<span class="w"> </span>last<span class="o">)</span>:
+<span class="w">  </span>File<span class="w"> </span><span class="s2">&quot;&lt;stdin&gt;&quot;</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;module&gt;
+<span class="w">  </span>File<span class="w"> </span><span class="s2">&quot;/usr/local/lib/python3.6/dist-packages/torch/__init__.py&quot;</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">195</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>&lt;module&gt;
+<span class="w">    </span>_load_global_deps<span class="o">()</span>
+<span class="w">  </span>File<span class="w"> </span><span class="s2">&quot;/usr/local/lib/python3.6/dist-packages/torch/__init__.py&quot;</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">148</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>_load_global_deps
+<span class="w">    </span>ctypes.CDLL<span class="o">(</span>lib_path,<span class="w"> </span><span class="nv">mode</span><span class="o">=</span>ctypes.RTLD_GLOBAL<span class="o">)</span>
+<span class="w">  </span>File<span class="w"> </span><span class="s2">&quot;/usr/lib/python3.6/ctypes/__init__.py&quot;</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">348</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>__init__
+<span class="w">    </span>self._handle<span class="w"> </span><span class="o">=</span><span class="w"> </span>_dlopen<span class="o">(</span>self._name,<span class="w"> </span>mode<span class="o">)</span>
+OSError:<span class="w"> </span>/usr/lib/aarch64-linux-gnu/libcudnn.so.8:<span class="w"> </span>file<span class="w"> </span>too<span class="w"> </span>short
+</code></pre></div>
+<p>解决这个错误还是跟上面的一样，只不过导入的包不一样</p>
+<div class="highlight"><pre><span></span><code>导入包路径
+/usr/lib/aarch64-linux-gnu
 
-sudo ./flash.sh jetson-nano-emmc mmcblk0p1
-
-# 检查SD卡是否被识别
-sudo ls /dev/mmcblk*
+<span class="c1">#宿主机执行</span>
+cp<span class="w"> </span>-rf<span class="w">  </span>/usr/lib/aarch64-linux-gnu/<span class="w"> </span>/home/nvidia/renhe/docker_test/panel_inference/
+<span class="c1">#进入容器再执行</span>
+cp<span class="w"> </span>-rf<span class="w"> </span>/root/code/aarch64-linux-gnu/<span class="w"> </span>/usr/lib/
 </code></pre></div>
-<p>6 复制系统到tf卡</p>
-<div class="highlight"><pre><span></span><code>格式化SD卡
-sudo mkfs.ext4 /dev/mmcblk1
-挂载到mnt
-sudo mount /dev/mmcblk1 /mnt/
-复制整个文件系统
-sudo cp -ax / /mnt/
-卸载mnt
-sudo umount /dev/mnt/
-</code></pre></div>
-<p>7 <strong>修改boot文件,emmc和tf卡的2个文件都要修改，不然会无法启动TF卡</strong></p>
-<div class="highlight"><pre><span></span><code>sudo vim /boot/extlinux/extlinux.conf
-quiet root=/dev/mmcblk0p1  -&gt; quiet root=/dev/mmcblk1
-</code></pre></div>
-<h2 id="_2">配置环境</h2>
-<p>1 设置root密码</p>
-<div class="highlight"><pre><span></span><code>sudo passwd root
-</code></pre></div>
-<p>2 设置apt 镜像源</p>
-<div class="highlight"><pre><span></span><code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-sudo vim /etc/apt/sources.list
-# 恢复默认源
-sudo cp /etc/apt/sources.list.bak /etc/apt/sources.list
-
-# 添加
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-updates main restricted universe multiverse
-deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-updates main restricted universe multiverse
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-security main restricted universe multiverse
-deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-security main restricted universe multiverse
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-backports main restricted universe multiverse
-deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic-backports main restricted universe multiverse
-deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic main universe restricted
-deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ bionic main universe restricted
-
-# 更新apt软件源
-sudo apt update
-# E:dpkg was interrupted, you must manually run&#39;dpkg配置&#39;to correct the problem.
-cd /var/lib/dpkg/updates
-rm -r ./*
-</code></pre></div>
-<p>3 设置python源</p>
-<div class="highlight"><pre><span></span><code>sudo apt install python3-pip python3-dev
-sudo mkdir .pip
-cd .pip
-sudo vim pip.conf
-# 添加
-[global]
-timeout = 6999
-index-url = https://pypi.doubanio.com/simple
-trusted-host = pypi.doubanio.com
-#
-</code></pre></div>
-<p>4 中文输入法</p>
-<div class="highlight"><pre><span></span><code>sudo apt install ibus-pingyin
-</code></pre></div>
-<p>5 安装miniconda</p>
-<div class="highlight"><pre><span></span><code>https://github.com/conda-forge/miniforge
-#下载
-Miniforge3-Linux-aarch64.sh
-# 安装
-bash Miniforge3-Linux-aarch64.sh -b
-# 初始化
-~/miniforge3/bin/conda init
-# 使环境变量生效
-source ~/.bashrc
-# 解决每次进入终端就是conda base的问题
-conda config --set auto_activate_base false
-# .condarc
-channels:
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/peterjc123/
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/menpo/
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda/
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
-  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-show_channel_urls: true
-</code></pre></div>
-<p>6 报错 Illegal instruction(core dumped)</p>
-<div class="highlight"><pre><span></span><code>sudo vim  ~/.bashrc
-export OPENBLAS_CORETYPE=ARMV8
-source ~/.bashrc
-</code></pre></div>
-<p>7 安装jetson全家桶,cuda,cudnn,tensorRT等</p>
-<div class="highlight"><pre><span></span><code>sudo apt update
-sudo apt dist-upgrade
-sudo apt install nvidia-jetpack
-</code></pre></div>
-<p>8 设置conda环境</p>
-<div class="highlight"><pre><span></span><code>sudo vim .bashrc
-# 在文件末尾加入：
-export PATH=/usr/local/cuda-10.2/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
-export CUDA_HOME=$CUDA_HOME:/usr/local/cuda-10.2
-source .bashrc
-# 查看是否成功
-nvcc -V
-</code></pre></div>
-<p>9 安装torch,torchvision</p>
-<div class="highlight"><pre><span></span><code>sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev libopenblas-base libopenmpi-dev
-
-# 不使用conda环境
-sudo pip3 install torch-1.10.0-cp36-cp36m-linux_aarch64.whl
-
-# 验证是否成功
-import torch
-print(torch.__version__)
-print(torch.cuda.is_available())
-# torchvision
-sudo pip3 install pillow
-git clone --branch v0.11.0 https://github.com/pytorch/vision torchvision
-cd torchvision
-export BUILD_VERSION=0.11.0
-sudo python3 setup.py install
-
-# 使用conda 环境,直接pip install
-conda activate yolo
-pip install torch-1.9.0-cp36-cp36m-linux_aarch64.whl
-pip install pillow
-pip install torchvision-0.9.0a0+01dfa8e-cp36-cp36m-linux_aarch64.whl
-# 验证是否成功
-import torch
-print(torch.cuda.is_available())
-import torchvision
-</code></pre></div>
-<p>10 使用tensorRT，将pt文件转换为wts文件，再转换为engine文件,以yolov5为例</p>
-<div class="highlight"><pre><span></span><code># step 1
-git clone https://github.com/wang-xinyu/tensorrtx.git
-cp {tensorrtx}/yolov5/gen_wts.py {ultralytics}/yolov5
-cd {ultralytics}/yolov5
-python gen_wts.py -w yolov5s.pt -o yolov5s.wts
-# step2
-cd {tensorrtx}/yolov5/
-mkdir build &amp;&amp; cd build
-cp {ultralytics}/yolov5/yolov5s.wts {tensorrtx}/yolov5/build
-cmake ..
-make
-sudo ./yolov5 -s [.wts] [.engine] [n/s/m/l/x/n6/s6/m6/l6/x6 or c/c6 gd gw]  // serialize model to plan file
-sudo ./yolov5 -d [.engine] [image folder]  // deserialize and run inference, the images in [image folder] will be processed.
-// For example yolov5s
-sudo ./yolov5 -s yolov5s.wts yolov5s.engine s
-sudo ./yolov5 -d yolov5s.engine ../samples
-// For example Custom model with depth_multiple=0.17, width_multiple=0.25 in yolov5.yaml
-sudo ./yolov5 -s yolov5_custom.wts yolov5.engine c 0.17 0.25
-sudo ./yolov5 -d yolov5.engine ../samples
-# step 3 optional, load and run the tensorrt model in python
-// install python-tensorrt, pycuda, etc.
-// ensure the yolov5s.engine and libmyplugins.so have been built
-python yolov5_trt.py
-// Another version of python script, which is using CUDA Python instead of pycuda.
-python yolov5_trt_cuda_python.py
-</code></pre></div>
-<p>11 安装deepstream</p>
-<div class="highlight"><pre><span></span><code># 下载sdk
-https://developer.nvidia.com/deepstream_sdk_v6.0.0_jetsontbz2
-# 准备环境
-$ sudo apt install \
-libssl1.0.0 \
-libgstreamer1.0-0 \
-gstreamer1.0-tools \
-gstreamer1.0-plugins-good \
-gstreamer1.0-plugins-bad \
-gstreamer1.0-plugins-ugly \
-gstreamer1.0-libav \
-libgstrtspserver-1.0-0 \
-libjansson4=2.11-1
-# 安装
-sudo tar -xvf deepstream_sdk_v6.0.0_jetson.tbz2 -C /
-cd /opt/nvidia/deepstream/deepstream-6.0
-sudo ./install.sh
-sudo ldconfig
-# 查看版本
-deepstream-app --version-all
-# 使用yolov5
-</code></pre></div>
-<p>12 使用deepstream</p>
-<div class="highlight"><pre><span></span><code>1 git clone https://github.com/marcoslucianops/DeepStream-Yolo
-2 python gen_wts_yoloV5.py -w yolov5s.pt
-# 生成 yolov5s.cfg yolov5s.wts 2个文件
-3 Copy the generated `cfg` and `wts` files to the `DeepStream-Yolo` folder.
-4 CUDA_VER=10.2 make -C nvdsinfer_custom_impl_Yolo
-5 Edit the `config_infer_primary_yoloV5.txt` file according to your model (example for YOLOv5s)
-e.g
-[property]
-...
-custom-network-config=yolov5s.cfg
-model-file=yolov5s.wts
-...
-6 Edit `deepstream_app_config.txt`
-[source0]
-# type 1=camerav4l2 2=url 3=MultiURL 4=RTSP 5=CSI
-enable=1
-type=5
-camera-width=1280
-camera-height=720
-camera-fps-n=50
-camera-fps-d=1
-[primary-gie]
-config-file=config_infer_primary_yoloV5.txt
-7 run deepstream
-deepstream-app -c deepstream_app_config.txt
-</code></pre></div>
-<p>12.1 deepstream_app_config.txt解析</p>
-<div class="highlight"><pre><span></span><code>[application]
-enable-perf-measurement=1
-perf-measurement-interval-sec=5
-# rows 和 columns 控制最终显示的布局，这里 1 × 1 就是最终显示 1 路，如果是 3 × 2 就是三行两列的布局显示 6 路视频。其中，width 和 height 是分辨率
-[tiled-display]
-enable=1
-rows=1
-columns=1
-width=1280
-height=720
-gpu-id=0
-nvbuf-memory-type=0
-#控制视频输入来源，可以设置多个 source 实现多路视频流的读取，通过 type 确定视频流的类型和读取方式，还可以通过 num-sources 对同一路视频进行复制扩展
-[source0]
-enable=1
-type=3
-uri=file:/home/vaeput/yolov5/data/mp4/test.mp4
-num-sources=1
-gpu-id=0
-cudadec-memtype=0
-# 调用csi摄像头
-[source1]
-enable=1
-type=5
-camera-width=1280
-camera-height=720
-camera-fps-n=50
-camera-fps-d=1
-# DeepStream 可以控制输出的方式，可以不输出结果、窗口显示和 RTSP 推流等方式。同样可以使用多个 sink，通过不同的方式同时输出结果。
-[sink0]
-enable=1
-type=2
-sync=0
-gpu-id=0
-nvbuf-memory-type=0
-
-[osd]
-enable=1
-gpu-id=0
-border-width=5
-text-size=15
-text-color=1;1;1;1;
-text-bg-color=0.3;0.3;0.3;1
-font=Serif
-show-clock=0
-clock-x-offset=800
-clock-y-offset=820
-clock-text-size=12
-clock-color=1;0;0;0
-nvbuf-memory-type=0
-
-[streammux]
-gpu-id=0
-live-source=0
-batch-size=1
-batched-push-timeout=40000
-width=1920
-height=1080
-enable-padding=0
-nvbuf-memory-type=0
-# 修改模型配置文件路径，在文件 config_infer_primary_yoloV5.txt 中对模型的相关参数进行了设置，需要从主配置文件中加载。
-[primary-gie]
-enable=1
-gpu-id=0
-gie-unique-id=1
-nvbuf-memory-type=0
-config-file=config_infer_primary_yoloV5.txt
-[tests]
-file-loop=0
-</code></pre></div>
-<p>13 安装onnx 1.10.0</p>
-<div class="highlight"><pre><span></span><code>apt-get install protobuf-compiler libprotobuf-dev
-pip install pybind11[global]
-pip install onnx==1.10.0 onnxruntime==1.10.0
-</code></pre></div>
-<p>14 配置、编译Protobuf</p>
-<div class="highlight"><pre><span></span><code>$ mkdir protobuf-3.11.4 &amp;&amp; cd protobuf-3.11.4    // 创建protobuf编译的文件夹
-$ uzip protobuf-3.11.4.zip    // 解压protobuf压缩包
-
-$ cd protobuf-3.11.4/cmake
-$ cmake . -Dprotobuf_BUILD_TESTS=OFF
-$ cmake --build .
-
-$ mkdir protobuf  // 创建protobuf安装的文件夹
-$ make install DESTDIR=/home/nvidia/protobuf // 指定protobuf安装的路径
-# 注：编译完成之后protobuf文件夹下仅仅只有user一个文件夹，需要将编译好的protobuf/user/local下的bin、include、lib文件夹复制到protobuf当前文件夹下，方便后续tensorRT_Pro项目CMakeLists.txt的指定
-$ sudo vim /etc/profile
-export PATH=$PATH:/home/nvidia/protobuf/bin
-export PKG_CONFIG_PATH=/home/nvidia/protobuf/lib/pkgconfig/
-$ source /etc/profile
-$ sudo vim /etc/ld.so.conf
-# 配置动态路径
-sudo vim /etc/ld.so.conf
-# 追加如下内容，注意路径修改为自己的路径
-/home/nvidia/protobuf/lib
-#验证
-protoc --version
-</code></pre></div>
-<p>15 安装opencv 4.5.1</p>
-<p>参考https://blog.csdn.net/m0_62013374/article/details/125014338?spm=1001.2014.3001.5506</p>
-<p>1 下载opencv与opencv-contrib的zip源码包，并解压，将opencv-contrib放进opencv文件夹</p>
-<p>2 mkdir build，把opencv / modules / features2d 复制，然后粘贴到opencv / build目录中</p>
-<p>3 修改file文件的路径(boostdesc_bgm.i)</p>
-<p>4 sudo make -j8 ,可能容易被kill，可以尝试换回make -j4</p>
-<p>5 sudo make install</p>
-<p>6 配置opencv的库添加到路径</p>
-<div class="highlight"><pre><span></span><code>sudo vim /etc/ld.so.conf.d/opencv.conf
-添加 /usr/local/lib
-sudo ldconfig
-sudo gedit /etc/bash.bashrc
-PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
-export PKG_CONFIG_PATH
-source /etc/bash.bashrc
-</code></pre></div>
-<p>16 安装ros</p>
-<div class="highlight"><pre><span></span><code>wget http://fishros.com/install -O fishros &amp;&amp; bash fishros
+<p>自此再次执行torch导入</p>
+<div class="highlight"><pre><span></span><code>root@nvidia-desktop:~/code#<span class="w"> </span>python3
+Python<span class="w"> </span><span class="m">3</span>.6.9<span class="w"> </span><span class="o">(</span>default,<span class="w"> </span>Jan<span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">2021</span>,<span class="w"> </span><span class="m">15</span>:33:00<span class="o">)</span>
+<span class="o">[</span>GCC<span class="w"> </span><span class="m">8</span>.4.0<span class="o">]</span><span class="w"> </span>on<span class="w"> </span>linux
+Type<span class="w"> </span><span class="s2">&quot;help&quot;</span>,<span class="w"> </span><span class="s2">&quot;copyright&quot;</span>,<span class="w"> </span><span class="s2">&quot;credits&quot;</span><span class="w"> </span>or<span class="w"> </span><span class="s2">&quot;license&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>information.
+&gt;&gt;&gt;<span class="w"> </span>import<span class="w"> </span>torch
+&gt;&gt;&gt;<span class="w"> </span>torch.__version__
+<span class="s1">&#39;1.8.0&#39;</span>
+&gt;&gt;&gt;
+成功
 </code></pre></div>
 
 
