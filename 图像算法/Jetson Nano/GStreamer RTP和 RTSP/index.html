@@ -628,6 +628,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#matroskamux" class="md-nav__link">
+    matroskamux 混合器模式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matroskamux_1" class="md-nav__link">
+    matroskamux 混合器模式
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1335,6 +1349,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#matroskamux" class="md-nav__link">
+    matroskamux 混合器模式
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#matroskamux_1" class="md-nav__link">
+    matroskamux 混合器模式
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1356,6 +1384,7 @@
 <h1 id="gstreamer-rtp-rtsp">GStreamer RTP和 RTSP</h1>
 <h3 id="rtp">RTP（传输层）</h3>
 <p>RTP全名是Real-time Transport Protocol（实时传输协议）。RTP 用来为IP网上的语音、图像、传真等多种需要实时传输的多媒体数据提供端到端的实时传输服务。RTP为Internet上端到端的实时传输提供时间信息和流同步，但并不保证服务质量，服务质量由 RTCP来提供。</p>
+<p>将数据封装为RTP包</p>
 <h3 id="rtpserver-udp">RTP:Server UDP</h3>
 <p>jetson nano：作为服务器端</p>
 <div class="highlight"><pre><span></span><code>IP:10.0.0.179
@@ -1408,7 +1437,20 @@ gst-launch-1.0<span class="w"> </span>videotestsrc<span class="w"> </span>is-liv
 <div class="highlight"><pre><span></span><code>IP:10.0.0.215
 
 
-gst-launch-1.0<span class="w"> </span>tcpclientsrc<span class="w"> </span><span class="nv">host</span><span class="o">=</span><span class="m">10</span>.0.0.179<span class="w"> </span><span class="nv">port</span><span class="o">=</span><span class="m">4953</span><span class="w"> </span>！application/x-rtp-stream,encoding-name<span class="o">=</span>JPEG,payload<span class="o">=</span><span class="m">26</span><span class="w"> </span>！rtpstreamdepay<span class="w"> </span>!<span class="w"> </span>rtpjpegdepay<span class="w"> </span>!<span class="w"> </span>jpegdec<span class="w"> </span>!<span class="w"> </span>autovideosink
+gst-launch-1.0<span class="w"> </span>tcpclientsrc<span class="w"> </span><span class="nv">host</span><span class="o">=</span><span class="m">10</span>.0.0.179<span class="w"> </span><span class="nv">port</span><span class="o">=</span><span class="m">4953</span><span class="w"> </span>!<span class="w"> </span>application/x-rtp-stream,encoding-name<span class="o">=</span>JPEG,payload<span class="o">=</span><span class="m">26</span><span class="w"> </span>!<span class="w"> </span>rtpstreamdepay<span class="w"> </span>!<span class="w"> </span>rtpjpegdepay<span class="w"> </span>!<span class="w"> </span>jpegdec<span class="w"> </span>!<span class="w"> </span>autovideosink
+</code></pre></div>
+<h3 id="matroskamux">matroskamux 混合器模式</h3>
+<p>jetson nano：作为服务器端</p>
+<div class="highlight"><pre><span></span><code>IP:10.0.0.179
+
+gst-launch-1.0<span class="w"> </span>videotestsrc<span class="w"> </span>is-live<span class="o">=</span><span class="nb">true</span><span class="w"> </span>!<span class="w"> </span>jpegenc<span class="w"> </span>!<span class="w"> </span>matroskamux<span class="w"> </span>!<span class="w"> </span>tcpserversink<span class="w"> </span><span class="nv">host</span><span class="o">=</span><span class="m">10</span>.0.0.179<span class="w"> </span><span class="nv">port</span><span class="o">=</span><span class="m">4953</span>
+</code></pre></div>
+<h3 id="matroskamux_1">matroskamux 混合器模式</h3>
+<p>mac 录屏台式机：客户端</p>
+<div class="highlight"><pre><span></span><code>IP:10.0.0.215
+
+
+gst-launch-1.0<span class="w"> </span>tcpclientsrc<span class="w"> </span><span class="nv">host</span><span class="o">=</span><span class="m">10</span>.0.0.179<span class="w"> </span><span class="nv">port</span><span class="o">=</span><span class="m">4953</span><span class="w"> </span>!<span class="w"> </span>matroskademux<span class="w"> </span>!<span class="w"> </span>jpegdec<span class="w"> </span>!<span class="w"> </span>autovideosink
 </code></pre></div>
 
 
