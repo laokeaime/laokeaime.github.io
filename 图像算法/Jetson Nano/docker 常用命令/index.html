@@ -10,31 +10,27 @@
       
       
       
-        <link rel="canonical" href="https://laokeaime.github.io/%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D/%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/">
+        <link rel="canonical" href="https://laokeaime.github.io/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/Jetson%20Nano/docker%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
       
       
-        <link rel="prev" href="../%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/">
       
       
-        <link rel="next" href="../../%E8%A3%85%E6%9C%BA%E6%97%A5%E8%AE%B0/%E5%B0%8F%E4%B8%BB%E6%9C%BA/">
+        <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="已更新内容的 RSS 订阅" href="../../../feed_rss_updated.xml">
       
-      
-        <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../feed_rss_created.xml">
-        <link rel="alternate" type="application/rss+xml" title="已更新内容的 RSS 订阅" href="../../feed_rss_updated.xml">
-      
-      <link rel="icon" href="../../images/favicon.png">
+      <link rel="icon" href="../../../images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
     
     
       
-        <title>算法工程师面试 - keaiboom</title>
+        <title>docker 常用命令 - keaiboom</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.35e1ed30.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -53,7 +49,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#docker" class="md-skip">
           跳转至
         </a>
       
@@ -98,7 +94,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../.." title="keaiboom" class="md-header__button md-logo" aria-label="keaiboom" data-md-component="logo">
+    <a href="../../.." title="keaiboom" class="md-header__button md-logo" aria-label="keaiboom" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -118,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              算法工程师面试
+              docker 常用命令
             
           </span>
         </div>
@@ -223,7 +219,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -248,7 +244,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/Jetson%20Nano/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-tabs__link">
+        <a href="../%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-tabs__link">
           
   
     
@@ -267,13 +263,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D/%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/" class="md-tabs__link">
           
   
     
@@ -293,7 +287,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../%E8%A3%85%E6%9C%BA%E6%97%A5%E8%AE%B0/%E5%B0%8F%E4%B8%BB%E6%9C%BA/" class="md-tabs__link">
+        <a href="../../../%E8%A3%85%E6%9C%BA%E6%97%A5%E8%AE%B0/%E5%B0%8F%E4%B8%BB%E6%9C%BA/" class="md-tabs__link">
           
   
     
@@ -334,7 +328,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="keaiboom" class="md-nav__button md-logo" aria-label="keaiboom" data-md-component="logo">
+    <a href="../../.." title="keaiboom" class="md-nav__button md-logo" aria-label="keaiboom" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -363,7 +357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -482,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/Jetson%20Nano/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-nav__link">
+      <a href="../%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -502,7 +496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/Jetson%20Nano/jetson_nano/" class="md-nav__link">
+      <a href="../jetson_nano/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -522,7 +516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/Jetson%20Nano/docker%20%E5%B8%B8%E7%94%A8%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+      <a href="../docker%20%E5%B8%B8%E7%94%A8%E7%8E%AF%E5%A2%83/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -542,7 +536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/Jetson%20Nano/GStreamer%20RTP%E5%92%8C%20RTSP/" class="md-nav__link">
+      <a href="../GStreamer%20RTP%E5%92%8C%20RTSP/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -613,7 +607,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/docker%20%E4%BD%BF%E7%94%A8/docker%20%E7%94%A8%E6%B3%95/" class="md-nav__link">
+      <a href="../../docker%20%E4%BD%BF%E7%94%A8/docker%20%E7%94%A8%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -698,7 +692,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%20%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="md-nav__link">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%20%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -718,7 +712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%20%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B/" class="md-nav__link">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%20%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -738,7 +732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E5%87%BD%E6%95%B0/" class="md-nav__link">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E5%87%BD%E6%95%B0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -758,7 +752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E6%8C%87%E9%92%88/" class="md-nav__link">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E6%8C%87%E9%92%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -778,7 +772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2B%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -798,7 +792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2BOOP%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%BC%80%E5%8F%91/" class="md-nav__link">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/c%2B%2BOOP%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%BC%80%E5%8F%91/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -818,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/C%2B%2B%E6%8A%80%E8%83%BD/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" class="md-nav__link">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -838,7 +832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/C%2B%2B%E6%8A%80%E8%83%BD/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/" class="md-nav__link">
+      <a href="../../C%2B%2B%E6%8A%80%E8%83%BD/STL%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF%E5%BA%93/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -909,7 +903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/CMake/CMake%E5%9F%BA%E7%A1%80%E8%AF%BE/" class="md-nav__link">
+      <a href="../../CMake/CMake%E5%9F%BA%E7%A1%80%E8%AF%BE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -982,7 +976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/OpenCV%26TensorRT%E5%9F%BA%E7%A1%80/opencv%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" class="md-nav__link">
+      <a href="../../OpenCV%26TensorRT%E5%9F%BA%E7%A1%80/opencv%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1002,7 +996,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/OpenCV%26TensorRT%E5%9F%BA%E7%A1%80/tensorRT%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      <a href="../../OpenCV%26TensorRT%E5%9F%BA%E7%A1%80/tensorRT%E5%9F%BA%E7%A1%80/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1035,8 +1029,6 @@
       
   
   
-    
-  
   
     
     
@@ -1052,12 +1044,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -1071,7 +1063,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             个人
@@ -1084,7 +1076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/" class="md-nav__link">
+      <a href="../../../%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D/%E6%B5%8B%E8%AF%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1102,29 +1094,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    算法工程师面试
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../%E4%B8%AA%E4%BA%BA%E4%BB%8B%E7%BB%8D/%E7%AE%97%E6%B3%95%E5%B7%A5%E7%A8%8B%E5%B8%88%E9%9D%A2%E8%AF%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1133,61 +1105,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    多态的优点
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    什么是预训练
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    1. 并行残差连接的多尺度特征提取融合模块
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    2. 轻量级的混合注意力模块
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    3. 倒残差自注意力模块
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1249,7 +1166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../%E8%A3%85%E6%9C%BA%E6%97%A5%E8%AE%B0/%E5%B0%8F%E4%B8%BB%E6%9C%BA/" class="md-nav__link">
+      <a href="../../../%E8%A3%85%E6%9C%BA%E6%97%A5%E8%AE%B0/%E5%B0%8F%E4%B8%BB%E6%9C%BA/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1290,49 +1207,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    多态的优点
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    什么是预训练
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    1. 并行残差连接的多尺度特征提取融合模块
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    2. 轻量级的混合注意力模块
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
-    3. 倒残差自注意力模块
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1349,91 +1223,12 @@
   
 
 
-<h1 id="_1">算法工程师面试</h1>
-<ul>
-<li>目标检测中的问题和发展脉络</li>
-<li>检测中正负样本不均衡<ul>
-<li>生成模型</li>
-<li>改变损失函数，使用像Focal Loss、GHM（Gradient Harmonizing Mechanism）等更适应样本不均衡的损失函数。</li>
-<li>数据增强</li>
-</ul>
-</li>
-<li>检测评估指标和原理</li>
-<li>过拟合现象和解决方案</li>
-<li>
-<p>训练集和测试集怎么划分</p>
-<p>随机划分</p>
-</li>
-<li>
-<p>batchnorm原理</p>
-</li>
-<li>shortcut作用</li>
-<li>class和struct区别</li>
-<li>
-<p>什么是多态</p>
-<p><em>同一个事件发生在不同的对象上会产生不同的结果。</em></p>
-<h3 id="_2"><strong>多态的优点</strong></h3>
-<ul>
-<li>
+<h1 id="docker">docker 常用命令</h1>
 <ol>
-<li>消除类型之间的耦合关系</li>
+<li>启动容器</li>
 </ol>
-</li>
-<li>
-<ol>
-<li>可替换性</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>可扩充性</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>接口性</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>灵活性</li>
-</ol>
-</li>
-<li>
-<ol>
-<li>简化性</li>
-</ol>
-</li>
-<li>new和delete，malloc区别</li>
-<li>堆内存和栈内存</li>
-</ul>
-</li>
-</ul>
-<p><a href="https://www.notion.so/8e9f3c0a68ef46f3a9580190248941d9?pvs=21">阿里面试题汇总</a></p>
-<p><a href="https://www.notion.so/1230a2421c074d849a19f50451826cfa?pvs=21">网易面经题</a></p>
-<h3 id="_3"><strong>什么是预训练</strong></h3>
-<p>在CV里，网络底层参数使用其它任务学习好的参数，高层参数仍然随机初始化。之后，用该任务的训练数据训练网络，底层参数微调。</p>
-<h3 id="1"><strong>1. 并行残差连接的多尺度特征提取融合模块</strong></h3>
-<p>这是一种用于多尺度特征提取和融合的模块。基本思想是同时对输入进行不同尺度（例如，大小、分辨率等）的特征提取，并使用残差连接来促进信息的流动。这样，每一层都可以接收到来自不同尺度的有用信息，从而提高模型对各种尺度特征的适应性和准确性。</p>
-<ul>
-<li><strong>多尺度特征提取</strong>：使用不同大小的卷积核或不同步长的池化层进行特征提取。</li>
-<li><strong>残差连接</strong>：通过残差连接，不仅可以将浅层特征与深层特征结合起来，还可以解决梯度消失或爆炸问题。</li>
-<li><strong>特征融合</strong>：不同尺度的特征图经过一定的处理后，被融合成一个统一的特征表示。</li>
-</ul>
-<h3 id="2"><strong>2. 轻量级的混合注意力模块</strong></h3>
-<p>这一模块通常用于提升网络对空间和通道特征的感知能力，而其“轻量级”主要是通过减少计算复杂度和参数数量来实现的。</p>
-<ul>
-<li><strong>空间注意力和通道注意力</strong>：模块内部通常包含空间注意力机制和通道注意力机制，以便捕捉不同维度上的依赖关系。</li>
-<li><strong>轻量级设计</strong>：通过使用更小的卷积核、分组卷积或者其它优化手段减少计算负担。</li>
-<li><strong>混合</strong>：将多种注意力机制（如自注意力、卷积注意力等）以某种方式融合，以实现更全面的特征提取。</li>
-</ul>
-<h3 id="3"><strong>3. 倒残差自注意力模块</strong></h3>
-<p>这一模块结合了自注意力机制和倒残差结构（即，先扩张通道，然后再减少）。</p>
-<ul>
-<li><strong>自注意力</strong>：允许模型在不同位置之间进行信息交换，有助于捕捉长范围依赖。</li>
-<li><strong>倒残差结构</strong>：通常在移动端或者资源有限的环境中使用，通过先增加然后减少通道数，以提高模型性能同时减少计算量。</li>
-<li><strong>模块化设计</strong>：由于使用了自注意力和倒残差，这种模块通常很容易插入到现有的网络架构中。</li>
-</ul>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--runtime<span class="w"> </span>nvidia<span class="w"> </span>-v<span class="w"> </span>/home/ubuntu/workspace/:/root/code/<span class="w"> </span>c3c388a58b0e
+</code></pre></div>
 
 
 
@@ -1505,14 +1300,14 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "announce.dismiss"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.indexes", "toc.follow", "navigation.top", "search.suggest", "search.highlight", "search.share", "header.autohide", "announce.dismiss"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
       
-        <script src="../../javascripts/baidu-tongji.js"></script>
+        <script src="../../../javascripts/baidu-tongji.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
