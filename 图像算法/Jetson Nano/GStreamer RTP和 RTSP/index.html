@@ -681,6 +681,26 @@
     RTSP 实时流传输协议（Real Time Streaming Protocol, RTSP）
   </a>
   
+    <nav class="md-nav" aria-label="RTSP 实时流传输协议（Real Time Streaming Protocol, RTSP）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    摄像头数据格式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yuv" class="md-nav__link">
+    摄像头数据格式 YUV
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1443,6 +1463,26 @@
     RTSP 实时流传输协议（Real Time Streaming Protocol, RTSP）
   </a>
   
+    <nav class="md-nav" aria-label="RTSP 实时流传输协议（Real Time Streaming Protocol, RTSP）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    摄像头数据格式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#yuv" class="md-nav__link">
+    摄像头数据格式 YUV
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1557,6 +1597,69 @@ gst-launch-1.0<span class="w"> </span>-v<span class="w"> </span>videotestsrc<spa
 <h2 id="rtsp-real-time-streaming-protocol-rtsp">RTSP 实时流传输协议（Real Time Streaming Protocol, RTSP）</h2>
 <p>是TCP/IP协议体系中的一个应用层协议，由哥伦比亚大学、网景和RealNetworks公司提交的IETF RFC标准。该协议定义了一对多应用程序如何有效地通过IP网络传送多媒体数据。RTSP在体系结构上位于RTP和RTCP之上，它使用TCP或UDP完成数据传输</p>
 <p>启动 deepstream</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">gi</span>
+<span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">&#39;Gst&#39;</span><span class="p">,</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">&#39;GstRtspServer&#39;</span><span class="p">,</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gst</span><span class="p">,</span> <span class="n">GObject</span><span class="p">,</span> <span class="n">GstRtspServer</span>
+
+<span class="n">Gst</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">mainloop</span> <span class="o">=</span> <span class="n">GObject</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">GstRtspServer</span><span class="o">.</span><span class="n">RTSPServer</span><span class="p">()</span>
+<span class="n">factory</span> <span class="o">=</span> <span class="n">GstRtspServer</span><span class="o">.</span><span class="n">RTSPMediaFactory</span><span class="p">()</span>
+<span class="n">factory</span><span class="o">.</span><span class="n">set_launch</span><span class="p">(</span>
+    <span class="s1">&#39; ( videotestsrc is-live=1 &#39;</span>
+    <span class="s1">&#39;! video/x-raw,format=(string)NV12,width=(int)320,height=(int)180,framerate=20/1 &#39;</span>
+    <span class="s1">&#39;! nvvidconv ! nvv4l2h264enc ! h264parse ! rtph264pay name=pay0 bitrate=40000 pt=96 ) &#39;</span>
+<span class="p">)</span>
+<span class="c1"># allow multiple connections</span>
+<span class="n">factory</span><span class="o">.</span><span class="n">set_shared</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">mounts</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">get_mount_points</span><span class="p">()</span>
+<span class="n">mounts</span><span class="o">.</span><span class="n">add_factory</span><span class="p">(</span><span class="s1">&#39;/live&#39;</span><span class="p">,</span> <span class="n">factory</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;rtsp://10.0.0.179:8554/live&#39;</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">mainloop</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+<p>更换摄像头数据源</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">gi</span>
+<span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">&#39;Gst&#39;</span><span class="p">,</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="n">gi</span><span class="o">.</span><span class="n">require_version</span><span class="p">(</span><span class="s1">&#39;GstRtspServer&#39;</span><span class="p">,</span><span class="s1">&#39;1.0&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">gi.repository</span> <span class="kn">import</span> <span class="n">Gst</span><span class="p">,</span> <span class="n">GObject</span><span class="p">,</span> <span class="n">GstRtspServer</span>
+
+<span class="n">Gst</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">mainloop</span> <span class="o">=</span> <span class="n">GObject</span><span class="o">.</span><span class="n">MainLoop</span><span class="p">()</span>
+<span class="n">server</span> <span class="o">=</span> <span class="n">GstRtspServer</span><span class="o">.</span><span class="n">RTSPServer</span><span class="p">()</span>
+<span class="n">factory</span> <span class="o">=</span> <span class="n">GstRtspServer</span><span class="o">.</span><span class="n">RTSPMediaFactory</span><span class="p">()</span>
+<span class="n">factory</span><span class="o">.</span><span class="n">set_launch</span><span class="p">(</span>
+    <span class="s1">&#39; ( nvarguscamerasrc &#39;</span>
+    <span class="s1">&#39;! video/x-raw(memory:NVMM),width=(int)1280,height=(int)720,format=(string)NV12,framerate=(fraction)30/1 &#39;</span>
+    <span class="s1">&#39;! nvv4l2h264enc ! h264parse ! rtph264pay name=pay0 bitrate=40000 pt=96 ) &#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># allow multiple connections</span>
+<span class="n">factory</span><span class="o">.</span><span class="n">set_shared</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">mounts</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">get_mount_points</span><span class="p">()</span>
+<span class="n">mounts</span><span class="o">.</span><span class="n">add_factory</span><span class="p">(</span><span class="s1">&#39;/live&#39;</span><span class="p">,</span> <span class="n">factory</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;rtsp://192.168.2.9:8554/live&#39;</span><span class="p">)</span>
+<span class="n">server</span><span class="o">.</span><span class="n">attach</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">mainloop</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+<p>使用 rtsp 播放器进行播放</p>
+<h3 id="_2">摄像头数据格式</h3>
+<p>摄像头的数据输出格式一般分为RAW RGB和非raw RGB格式。Raw RGB是Sensor每个感光点感应到的RGB数值。Raw RGB经过ISP的处理还原出三原色，输出YUV或者RGB格式。</p>
+<h3 id="yuv">摄像头数据格式 YUV</h3>
+<ol>
+<li>YUV 是一种颜色编码方法：与RGB编码方法类似</li>
+</ol>
+<p>其中“Y”表示明亮度（Luminance 或Luma），也就是灰阶值，U和V 表示的则是色度（Chrominance 或 Chroma），用来表示，作用是描述影像色彩及饱和度，用于指定像素的颜色</p>
+<ol>
+<li>YUV格式好处</li>
+</ol>
+<p>可以避免相互干扰（没有UV信息一样可以显示完整的图像，因而解决了彩色电视与黑白电视的兼容问题）；
+降低色度的采样率而不会对图像质量影响太大，降低了视屏是信号传输时对频宽（带宽）的要求。</p>
+<ol>
+<li>YUV数据格式有哪些</li>
+</ol>
+<p>YU12、1420、YV12、NV12、NV21、YUV420P、YUV420SP、YUV422P、YUV444P</p>
 
 
 
