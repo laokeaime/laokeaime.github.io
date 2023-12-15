@@ -598,46 +598,87 @@
     RTP（传输层）
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="RTP（传输层）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#rtpserver-udp" class="md-nav__link">
     RTP:Server UDP
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#rtpclient-udp" class="md-nav__link">
     RTP:Client UDP
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#rtpserver-tcp" class="md-nav__link">
     RTP:Server TCP
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#rtpclient-tcp" class="md-nav__link">
     RTP:Client TCP
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#matroskamux" class="md-nav__link">
     matroskamux 混合器模式
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#matroskamux_1" class="md-nav__link">
     matroskamux 混合器模式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h264" class="md-nav__link">
+    H264编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h264_1" class="md-nav__link">
+    H264编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h264_2" class="md-nav__link">
+    H264 硬编码
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rtsp-real-time-streaming-protocol-rtsp" class="md-nav__link">
+    RTSP 实时流传输协议（Real Time Streaming Protocol, RTSP）
   </a>
   
 </li>
@@ -1319,46 +1360,87 @@
     RTP（传输层）
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="RTP（传输层）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#rtpserver-udp" class="md-nav__link">
     RTP:Server UDP
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#rtpclient-udp" class="md-nav__link">
     RTP:Client UDP
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#rtpserver-tcp" class="md-nav__link">
     RTP:Server TCP
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#rtpclient-tcp" class="md-nav__link">
     RTP:Client TCP
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#matroskamux" class="md-nav__link">
     matroskamux 混合器模式
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#matroskamux_1" class="md-nav__link">
     matroskamux 混合器模式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h264" class="md-nav__link">
+    H264编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h264_1" class="md-nav__link">
+    H264编码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#h264_2" class="md-nav__link">
+    H264 硬编码
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rtsp-real-time-streaming-protocol-rtsp" class="md-nav__link">
+    RTSP 实时流传输协议（Real Time Streaming Protocol, RTSP）
   </a>
   
 </li>
@@ -1382,7 +1464,7 @@
 
 
 <h1 id="gstreamer-rtp-rtsp">GStreamer RTP和 RTSP</h1>
-<h3 id="rtp">RTP（传输层）</h3>
+<h2 id="rtp">RTP（传输层）</h2>
 <p>RTP全名是Real-time Transport Protocol（实时传输协议）。RTP 用来为IP网上的语音、图像、传真等多种需要实时传输的多媒体数据提供端到端的实时传输服务。RTP为Internet上端到端的实时传输提供时间信息和流同步，但并不保证服务质量，服务质量由 RTCP来提供。</p>
 <p>将数据封装为RTP包</p>
 <h3 id="rtpserver-udp">RTP:Server UDP</h3>
@@ -1452,6 +1534,29 @@ gst-launch-1.0<span class="w"> </span>videotestsrc<span class="w"> </span>is-liv
 
 gst-launch-1.0<span class="w"> </span>tcpclientsrc<span class="w"> </span><span class="nv">host</span><span class="o">=</span><span class="m">10</span>.0.0.179<span class="w"> </span><span class="nv">port</span><span class="o">=</span><span class="m">4953</span><span class="w"> </span>!<span class="w"> </span>matroskademux<span class="w"> </span>!<span class="w"> </span>jpegdec<span class="w"> </span>!<span class="w"> </span>autovideosink
 </code></pre></div>
+<h3 id="h264">H264编码</h3>
+<p>jetson nano：作为服务器端</p>
+<div class="highlight"><pre><span></span><code>IP:10.0.0.179
+
+gst-launch-1.0<span class="w"> </span>-v<span class="w"> </span>videotestsrc<span class="w"> </span>!<span class="w"> </span><span class="s1">&#39;video/x-raw,width=(int)1280,height=(int)720,framerate=20/1&#39;</span><span class="w"> </span>!<span class="w"> </span>videoscale<span class="w"> </span>!<span class="w"> </span>videoconvert<span class="w"> </span>!<span class="w"> </span>x264enc<span class="w"> </span><span class="nv">tune</span><span class="o">=</span>zerolatency<span class="w"> </span><span class="nv">bitrate</span><span class="o">=</span><span class="m">2048</span><span class="w"> </span>speed-preset<span class="o">=</span>superfast<span class="w"> </span>!<span class="w"> </span>rtph264pay<span class="w"> </span>config-interval<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">pt</span><span class="o">=</span><span class="m">96</span><span class="w"> </span>!<span class="w"> </span>udpsink<span class="w"> </span><span class="nv">host</span><span class="o">=</span><span class="m">10</span>.0.0.215<span class="w"> </span><span class="nv">port</span><span class="o">=</span><span class="m">5004</span>
+</code></pre></div>
+<h3 id="_1"></h3>
+<h3 id="h264_1">H264编码</h3>
+<p>mac 录屏台式机：客户端，客户端（windows 平台下是""，Linux下是''）</p>
+<div class="highlight"><pre><span></span><code>IP:10.0.0.215
+
+gst-launch-1.0<span class="w"> </span>-v<span class="w"> </span>udpsrc<span class="w"> </span><span class="nv">port</span><span class="o">=</span><span class="m">5004</span><span class="w"> </span><span class="nv">caps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;application/x-rtp,media=(string)video,clockrate=(int)90000,encoding-name=(string)H264,payload=(int)96&quot;</span><span class="w"> </span>!<span class="w"> </span>rtph264depay<span class="w"> </span>!<span class="w"> </span>decodebin<span class="w"> </span>!<span class="w"> </span>videoconvert<span class="w"> </span>!<span class="w"> </span>autovideosink<span class="w"> </span><span class="nv">sync</span><span class="o">=</span><span class="nb">false</span>
+</code></pre></div>
+<h3 id="h264_2">H264 硬编码</h3>
+<p>jetson nano：作为服务器端   nvidia专用的编码格式<code>nvv4l2h264</code></p>
+<div class="highlight"><pre><span></span><code>IP:10.0.0.179
+
+gst-launch-1.0<span class="w"> </span>-v<span class="w"> </span>videotestsrc<span class="w"> </span>!<span class="w"> </span><span class="s1">&#39;video/x-raw,format=(string)NV12,width=(int)320,height=(int)180,framerate=20/1&#39;</span><span class="w"> </span>!<span class="w"> </span>nvvidconv<span class="w"> </span>!<span class="w"> </span>nvv4l2h264enc<span class="w"> </span>!<span class="w"> </span>h264parse<span class="w"> </span>!<span class="w"> </span>rtph264pay<span class="w"> </span>config-interval<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">pt</span><span class="o">=</span><span class="m">96</span><span class="w"> </span>!<span class="w"> </span>udpsink<span class="w"> </span><span class="nv">host</span><span class="o">=</span><span class="m">10</span>.0.0.215<span class="w"> </span><span class="nv">port</span><span class="o">=</span><span class="m">5004</span>
+</code></pre></div>
+<p>客户端仍可以使用之前的命令</p>
+<h2 id="rtsp-real-time-streaming-protocol-rtsp">RTSP 实时流传输协议（Real Time Streaming Protocol, RTSP）</h2>
+<p>是TCP/IP协议体系中的一个应用层协议，由哥伦比亚大学、网景和RealNetworks公司提交的IETF RFC标准。该协议定义了一对多应用程序如何有效地通过IP网络传送多媒体数据。RTSP在体系结构上位于RTP和RTCP之上，它使用TCP或UDP完成数据传输</p>
+<p>启动 deepstream</p>
 
 
 
