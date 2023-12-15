@@ -16,7 +16,7 @@
         <link rel="prev" href="../docker%20%E5%B8%B8%E7%94%A8%E7%8E%AF%E5%A2%83/">
       
       
-        <link rel="next" href="../../docker%20%E4%BD%BF%E7%94%A8/docker%20%E7%94%A8%E6%B3%95/">
+        <link rel="next" href="../deepstream%E6%8E%A8%E7%90%86/">
       
       
         <link rel="alternate" type="application/rss+xml" title="RSS 订阅" href="../../../feed_rss_created.xml">
@@ -449,6 +449,8 @@
       
         
       
+        
+      
     
     
     
@@ -698,6 +700,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    避坑指南
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -707,6 +716,26 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deepstream%E6%8E%A8%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    deepstream推理
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1480,6 +1509,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    避坑指南
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1660,6 +1696,9 @@ gst-launch-1.0<span class="w"> </span>-v<span class="w"> </span>videotestsrc<spa
 <li>YUV数据格式有哪些</li>
 </ol>
 <p>YU12、1420、YV12、NV12、NV21、YUV420P、YUV420SP、YUV422P、YUV444P</p>
+<h3 id="_3">避坑指南</h3>
+<p>Unable to create XXX插件</p>
+<p>当 gstreamer 不能创建Element元素时，注意删除缓存 <code>rm -rf ~l.cache/gstreamer-1.0/</code></p>
 
 
 
