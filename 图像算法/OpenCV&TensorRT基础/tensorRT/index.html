@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://laokeaime.github.io/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/Jetson%20Nano/docker%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+        <link rel="canonical" href="https://laokeaime.github.io/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95/OpenCV%26TensorRT%E5%9F%BA%E7%A1%80/tensorRT/">
       
       
       
@@ -23,7 +23,7 @@
     
     
       
-        <title>docker 常用命令 - keaiboom</title>
+        <title>tensorRT - keaiboom</title>
       
     
     
@@ -77,11 +77,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#docker" class="md-skip">
-          跳转至
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -114,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              docker 常用命令
+              tensorRT
             
           </span>
         </div>
@@ -244,7 +239,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-tabs__link">
+        <a href="../../Jetson%20Nano/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-tabs__link">
           
   
     
@@ -498,7 +493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-nav__link">
+      <a href="../../Jetson%20Nano/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -518,7 +513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../jetson_nano/" class="md-nav__link">
+      <a href="../../Jetson%20Nano/jetson_nano/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -538,7 +533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker%20%E5%B8%B8%E7%94%A8%E7%8E%AF%E5%A2%83/" class="md-nav__link">
+      <a href="../../Jetson%20Nano/docker%20%E5%B8%B8%E7%94%A8%E7%8E%AF%E5%A2%83/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -558,7 +553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GStreamer%20RTP%E5%92%8C%20RTSP/" class="md-nav__link">
+      <a href="../../Jetson%20Nano/GStreamer%20RTP%E5%92%8C%20RTSP/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -578,7 +573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../deepstream%E6%8E%A8%E7%90%86/" class="md-nav__link">
+      <a href="../../Jetson%20Nano/deepstream%E6%8E%A8%E7%90%86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1018,7 +1013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenCV%26TensorRT%E5%9F%BA%E7%A1%80/opencv%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" class="md-nav__link">
+      <a href="../opencv%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1038,7 +1033,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../OpenCV%26TensorRT%E5%9F%BA%E7%A1%80/tensorRT%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      <a href="../tensorRT%E5%9F%BA%E7%A1%80/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1316,8 +1311,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -1335,12 +1328,18 @@
   
 
 
-<h1 id="docker">docker 常用命令</h1>
+  <h1>tensorRT</h1>
+
 <ol>
-<li>启动容器</li>
+<li>
+<p>必须使用createNetworkV2，并指定为1（表示显性batch）。createNetwork已经废弃，非显性batch官方不推荐。这个方式直接影响推理时enqueue还是enqueueV2</p>
+</li>
+<li>
+<p>builder、config等指针，记得释放，否则会有内存泄漏，使用ptr-&gt;destroy（）释放</p>
+</li>
+<li>markOutput表示是该模型的输出节点，mark几次，就有几个输出，addlnput几次就有几个输入。这与推理时相呼应</li>
+<li>workspaceSize是工作空间大小，某些layer需要使用额外存储时，不会自己分配空间，而是为了内存复用， 直接找tensorRT要workspace空间。指的这个意思</li>
 </ol>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--runtime<span class="w"> </span>nvidia<span class="w"> </span>-v<span class="w"> </span>/home/ubuntu/workspace/:/root/code/<span class="w"> </span>c3c388a58b0e
-</code></pre></div>
 
 
 
